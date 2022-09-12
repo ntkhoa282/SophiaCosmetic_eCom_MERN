@@ -1,8 +1,5 @@
 import { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-//import bootstrap css
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import DefaultLayout from './layouts/DefaultLayout/DefaultLayout';
 import { publicRoutes, privateRoutes } from './routes/routes';
