@@ -1,0 +1,152 @@
+.title {
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 0;
+    background: #1f601f;
+    color: #ffffff;
+    padding: 12px 0;
+}
+.header {
+    background-image: url(Rectangle-1.png);
+    background-color: #37ad37;
+    padding: 20px 0;
+}
+
+.logo {
+    height: 56px;
+    width: 146px;
+}
+
+.shop-cart span {
+    color: #ffffff;
+    font-weight: bold;
+    padding-top: 10px;
+    text-decoration: none;
+}
+
+.shop-cart {
+    text-align: center;
+}
+
+.actions {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 56px;
+    white-space: nowrap;
+}
+
+.act-div {
+    a {
+        box-shadow: inset 0 0 0 0 #ffa500;
+        color: #ffffff;
+        margin: 0 -0.25rem;
+        padding: 0 0.25rem;
+        transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    a:hover {
+        box-shadow: inset 110px 0 0 0 #ffa500;
+        color: #1f601f;
+    }
+}
+
+.user-act {
+    padding-top: 13px;
+    text-align: end;
+}
+
+.lores {
+    margin-right: 20px;
+}
+
+.icon-user {
+    height: 28px;
+    width: 28px;
+    color: #ffffff;
+}
+
+.shop-right {
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.btn {
+    position: relative;
+    margin: auto;
+    padding: 6px 12px 6px 6px;
+    background: transparent;
+    border: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #fff;
+    transition: all 0.2s ease;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 28px;
+        width: 30px;
+        height: 38px;
+        transition: all 0.3s ease;
+    }
+    span {
+        position: relative;
+        font-size: 16px;
+        line-height: 18px;
+        font-weight: 500;
+        vertical-align: middle;
+    }
+
+    svg {
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: #111;
+        stroke-width: 2;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+    }
+    &:hover {
+        &:before {
+            width: 100%;
+            background: rgba(#ffa500, 1);
+        }
+        svg {
+            transform: translateX(0);
+        }
+        &:active {
+            transform: scale(0.96);
+        }
+    }
+}
+
+.icon {
+    padding: 0px 5px 0px 5px;
+}
+
+//Menu
+.bg-dark {
+    background: #1f601f !important;
+}
+
+.nav-item {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 40px;
+    padding-left: 100px;
+    font-style: normal;
+
+    a:hover {
+        color: #ffa500 !important;
+    }
+}
+
+.hotline {
+    color: #ffa500;
+}
