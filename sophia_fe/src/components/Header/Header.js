@@ -7,7 +7,7 @@ import Search from './Search/Search';
 
 const cx = classNames.bind(styles);
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     return (
         <header>

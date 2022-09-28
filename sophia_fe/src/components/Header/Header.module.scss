@@ -17,6 +17,7 @@
     width: 146px;
 }
 
+//When currentuser false
 .shop-cart span {
     color: #ffffff;
     font-weight: bold;
@@ -30,7 +31,7 @@
 
 .actions {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
     line-height: 56px;
     white-space: nowrap;
@@ -40,13 +41,14 @@
     a {
         box-shadow: inset 0 0 0 0 #ffa500;
         color: #ffffff;
-        margin: 0 -0.25rem;
-        padding: 0 0.25rem;
+        margin: 0 0.25rem;
+        padding: 5px 0.25rem;
+        border-radius: 10px;
         transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
     a:hover {
-        box-shadow: inset 110px 0 0 0 #ffa500;
-        color: #1f601f;
+        box-shadow: inset 120px 0 0 0 #ffa500;
+        color: #179717;
     }
 }
 
@@ -55,6 +57,7 @@
     text-align: end;
 }
 
+//When currentuser true
 .lores {
     margin-right: 20px;
 }
