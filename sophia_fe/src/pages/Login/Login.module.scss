@@ -5,6 +5,19 @@
     background-size: cover;
     background-position: center;
     position: relative;
+
+    h6 {
+        font-weight: 700;
+        font-size: 29px;
+        line-height: 42px;
+        /* Text banner */
+        color: #1f601f;
+        margin-bottom: 2rem;
+    }
+
+    img {
+        padding-bottom: 80px;
+    }
 }
 
 .content {
@@ -24,25 +37,12 @@
     margin: 0 auto;
 }
 
-h6 {
-    font-weight: 700 !important;
-    font-size: 29px !important ;
-    line-height: 42px !important;
-    /* Text banner */
-    color: #1f601f !important;
-    margin-bottom: 2rem !important;
-}
-
-img {
-    padding-bottom: 80px;
-}
-
 .register-item {
     margin-top: 30px;
 }
 
 .button-login {
-    background: #5CA259 !important;
+    background: #5ca259 !important;
     border-radius: 10px !important;
     width: 100% !important;
     padding: 7px !important;

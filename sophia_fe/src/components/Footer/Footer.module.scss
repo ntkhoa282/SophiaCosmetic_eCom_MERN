@@ -4,32 +4,37 @@ footer {
     width: 100%;
     margin-top: auto;
     bottom: 0;
-}
 
-h6 {
-    font-weight: 700 !important;
-    font-size: 15px !important;
-    line-height: 23px !important;
-    color: #fff !important;
-    margin-bottom: 25px !important;
-}
+    h6 {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 23px;
+        color: #fff;
+        margin-bottom: 25px;
+    }
 
-p {
-    font-size: 14px;
-    line-height: 19px;
-    color: #ffffff;
+    p {
+        font-size: 14px;
+        line-height: 19px;
+        color: #ffffff;
+    }
+
+    .logo {
+        height: 56px;
+    }
 }
 
 .search {
     position: relative;
-    margin: 10px 10px 10px 10px !important;
+    padding: 0 12 !important;
+    margin-top: 10px !important;
 }
 
 .search-input {
     background: #ffffff !important;
     border: 1px solid #1f601f !important;
-    box-sizing: border-box !important;
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%) !important;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
     border-radius: 30px !important;
     padding: 10px !important;
 }

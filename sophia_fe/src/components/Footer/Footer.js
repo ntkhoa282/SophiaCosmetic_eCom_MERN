@@ -9,7 +9,7 @@ function Footer() {
             <div className={cx('container')}>
                 <div className={cx('row')}>
                     <div className={cx('col-lg-3')}>
-                        <img className={cx('logo', 'mb-5')} src={require('~/assets/images/Logo.png')} alt="logo" />
+                        <img className={cx('logo', 'mb-5')} src={require('~/assets/Logo.svg').default} alt="logo" />
                     </div>
                     <div className={cx('col-lg-6', 'search')}>
                         <input

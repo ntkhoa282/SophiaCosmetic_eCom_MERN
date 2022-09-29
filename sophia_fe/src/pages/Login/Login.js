@@ -9,7 +9,7 @@ function Login() {
         <form action="" method="" className={cx('form')}>
             <div className={cx('content')}>
                 <Link to="/">
-                    <img className={cx('logo')} src={require('~/assets/Logo.svg').default} alt="logo" />
+                    <img className={cx('logo')} src={require('~/assets/LogoGreen.svg').default} alt="logo" />
                 </Link>
                 <div className={cx('register')}>
                     <h6>Đăng nhập</h6>
