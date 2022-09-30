@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faPhone, faUser, faHeart, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faPhone, faHeart, faCartShopping, faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
@@ -48,6 +48,7 @@ function Header() {
                                 </div>
                             ) : (
                                 <div className={cx('act-div')}>
+                                    <FontAwesomeIcon icon={faRightToBracket} />
                                     <Link to="/login" className={cx('actions')}>
                                         ĐĂNG NHẬP
                                     </Link>
