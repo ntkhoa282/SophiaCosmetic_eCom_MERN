@@ -4,10 +4,26 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import Search from './Search/Search';
+import Menu from './Menu/Menu';
 
 const cx = classNames.bind(styles);
 function Header() {
-    const currentUser = false;
+    const currentUser = true;
+
+    const MENU_ITEMS = [
+        {
+            to: '/profile',
+            menuTitle: 'Thông tin tài khoản',
+        },
+        {
+            to: '/my-order',
+            menuTitle: 'Đơn hàng của tôi',
+        },
+        {
+            to: '/',
+            menuTitle: 'Đăng xuất',
+        },
+    ];
 
     return (
         <header>
@@ -30,9 +46,9 @@ function Header() {
                         <div className={cx('col-lg-5', 'shop-cart')}>
                             {currentUser ? (
                                 <div className={cx('user-act')}>
-                                    <Link to="/profile" className={cx('lores')}>
+                                    <Menu items={MENU_ITEMS}>
                                         <FontAwesomeIcon icon={faUser} className={cx('icon-user')} />
-                                    </Link>
+                                    </Menu>
                                     <Link to="/">
                                         <button className={cx('btn', 'shop-right')}>
                                             <FontAwesomeIcon icon={faHeart} className={cx('icon')} />

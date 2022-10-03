@@ -1,0 +1,34 @@
+.menu-list {
+    width: 200px;
+}
+
+.menu-body {
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+// Menu items
+.menu-item {
+    display: inline-flex;
+    align-items: center;
+    min-width: 100px;
+    text-decoration: none;
+    background-color: white;
+    color: #37ad37;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    padding: 11px 16px !important;
+    line-height: 1.8rem;
+    font-size: 16px;
+    font-weight: 600 !important;
+    margin: 0 !important;
+
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
+
+    &:hover {
+        background-color: rgba(203, 203, 203, 1);
+    }
+}
