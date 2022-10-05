@@ -15,7 +15,6 @@ function MenuItem({ data }) {
     );
 }
 MenuItem.propTypes = {
-    to: PropTypes.node,
-    childrenItem: PropTypes.node,
+    data: PropTypes.object,
 };
 export default MenuItem;

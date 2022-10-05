@@ -1,5 +1,5 @@
 import ProductPage from '~/pages/ProductPage';
-import AboutPage from '~/pages/AboutPage';
+import AboutPage from '~/pages/About/AboutPage';
 import HomePage from '~/pages/HomePage';
 import Login from '~/pages/Login/Login';
 import Register from '~/pages/Register/Register';

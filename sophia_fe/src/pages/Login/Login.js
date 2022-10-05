@@ -1,21 +1,32 @@
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormInput } from '~/components/FormInput/FormInput';
 import styles from './Login.module.scss';
 import { useForm } from 'react-hook-form';
+import { loginUser } from '~/redux/apiResquest';
+import { useDispatch } from 'react-redux';
 
 const cx = classNames.bind(styles);
 function Login() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm({ mode: 'onSubmit' });
-    const onSubmit = (data, e) => console.log(data, e);
-    const onError = (errors, e) => console.log(errors, e);
+
+    const onSubmit = (data, e) => {
+        const user = {
+            username: data.username,
+            password: data.password,
+        };
+        loginUser(user, dispatch, navigate);
+    };
 
     return (
-        <form action="" method="POST" className={cx('form')} onSubmit={handleSubmit(onSubmit, onError)}>
+        <form action="" method="POST" className={cx('form')} onSubmit={handleSubmit(onSubmit)}>
             <div className={cx('content')}>
                 <Link to="/">
                     <img className={cx('logo')} src={require('~/assets/LogoGreen.svg').default} alt="logo" />
@@ -39,11 +50,7 @@ function Login() {
                             name="password"
                             type="password"
                             {...register('password', {
-                                require: { value: true, message: 'Vui lòng nhập đầy đủ thông tin' },
-                                pattern: {
-                                    value: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/,
-                                    message: 'Mật khẩu tối thiểu 8 ký tự, trong đó gồm ít nhất 1 chữ in hoa và 1 số',
-                                },
+                                required: { value: true, message: 'Vui lòng nhập đầy đủ thông tin' },
                             })}
                         >
                             Mật khẩu
@@ -52,12 +59,6 @@ function Login() {
                     <div className={cx('error-container')}>
                         {(errors.username?.type === 'required' || errors.password?.type === 'required') && (
                             <p className={cx('error-mess')}>Vui lòng điền đầy đủ thông tin</p>
-                        )}
-
-                        {errors.password?.type === 'pattern' && (
-                            <p className={cx('error-mess')}>
-                                Mật khẩu gồm ít nhất 8 ký tự, trong đó có ít nhất 1 chữ in hoa và 1 số
-                            </p>
                         )}
                     </div>
                     <div className={cx('register-item', 'd-flex', 'justify-content-between')}>

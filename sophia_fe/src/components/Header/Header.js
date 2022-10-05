@@ -2,13 +2,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faPhone, faHeart, faCartShopping, faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+//import { createAxios } from '~/ultis/createInstance';
 import styles from './Header.module.scss';
 import Search from './Search/Search';
 import Menu from './Menu/Menu';
+//import { logOut } from '~/redux/apiResquest';
+//import { logOutSuccess } from '~/redux/authSlice';
 
 const cx = classNames.bind(styles);
 function Header() {
-    const currentUser = true;
+    const currentUser = useSelector((state) => state.auth.login.currentUser);
+
+    //Logout func is not complete!
+    /*const accessToken = currentUser?.accessToken;
+    const id = currentUser?._id;
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    let axiosJWT = createAxios(currentUser, dispatch, logOutSuccess);
+
+    const handleLogout = () => {
+        logOut(dispatch, id, navigate, accessToken, axiosJWT);
+    };*/
 
     const MENU_ITEMS = [
         {

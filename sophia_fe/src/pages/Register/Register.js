@@ -1,22 +1,36 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormInput } from '~/components/FormInput/FormInput';
 import styles from './Register.module.scss';
 import { useForm } from 'react-hook-form';
+import { registerUser } from '~/redux/apiResquest';
+import { useDispatch } from 'react-redux';
 
 const cx = classNames.bind(styles);
 function Register() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data, e) => console.log(data, e);
-    const onError = (errors, e) => console.log(errors, e);
+    const onSubmit = (data) => {
+        const newUser = {
+            username: data.username,
+            name: data.name,
+            email: data.email,
+            phone: data.tel,
+            address: null,
+            password: data.password,
+        };
+        registerUser(newUser, dispatch, navigate);
+    };
     return (
-        <form action="" method="POST" className={cx('form')} onSubmit={handleSubmit(onSubmit, onError)}>
+        <form action="" method="POST" className={cx('form')} onSubmit={handleSubmit(onSubmit)}>
             <div className={cx('content')}>
                 <Link to="/">
                     <img className={cx('logo')} src={require('~/assets/LogoGreen.svg').default} alt="logo" />
@@ -68,7 +82,7 @@ function Register() {
                             name="password"
                             type="password"
                             {...register('password', {
-                                require: { value: true },
+                                required: { value: true, message: 'Vui lòng nhập đầy đủ thông tin' },
                                 pattern: { value: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/ },
                             })}
                         >
