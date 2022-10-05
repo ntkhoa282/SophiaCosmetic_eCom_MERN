@@ -1,21 +1,29 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faPhone, faHeart, faCartShopping, faRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+    faHouse,
+    faPhone,
+    faHeart,
+    faCartShopping,
+    faRightToBracket,
+    faUser,
+    faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-//import { createAxios } from '~/ultis/createInstance';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { createAxios } from '~/ultis/createInstance';
 import styles from './Header.module.scss';
 import Search from './Search/Search';
 import Menu from './Menu/Menu';
-//import { logOut } from '~/redux/apiResquest';
-//import { logOutSuccess } from '~/redux/authSlice';
+import { logOut } from '~/redux/apiResquest';
+import { logOutSuccess } from '~/redux/authSlice';
 
 const cx = classNames.bind(styles);
 function Header() {
     const currentUser = useSelector((state) => state.auth.login.currentUser);
 
     //Logout func is not complete!
-    /*const accessToken = currentUser?.accessToken;
+    const accessToken = currentUser?.accessToken;
     const id = currentUser?._id;
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -23,7 +31,7 @@ function Header() {
 
     const handleLogout = () => {
         logOut(dispatch, id, navigate, accessToken, axiosJWT);
-    };*/
+    };
 
     const MENU_ITEMS = [
         {
@@ -33,10 +41,6 @@ function Header() {
         {
             to: '/my-order',
             menuTitle: 'Đơn hàng của tôi',
-        },
-        {
-            to: '/',
-            menuTitle: 'Đăng xuất',
         },
     ];
 
@@ -61,7 +65,7 @@ function Header() {
                         <div className={cx('col-lg-5', 'shop-cart')}>
                             {currentUser ? (
                                 <div className={cx('user-act')}>
-                                    <Menu items={MENU_ITEMS}>
+                                    <Menu items={MENU_ITEMS} onClick={handleLogout}>
                                         <FontAwesomeIcon icon={faUser} className={cx('icon-user')} />
                                     </Menu>
                                     <Link to="/">
@@ -74,6 +78,16 @@ function Header() {
                                         <button className={cx('btn', 'shop-right')}>
                                             <FontAwesomeIcon icon={faCartShopping} className={cx('icon')} />
                                             <span>Giỏ hàng</span>
+                                        </button>
+                                    </Link>
+                                    <Link to="/">
+                                        <button
+                                            className={cx('btn', 'shop-right')}
+                                            type="button"
+                                            onClick={handleLogout}
+                                        >
+                                            <span>Đăng xuất</span>
+                                            <FontAwesomeIcon icon={faArrowRightFromBracket} className={cx('icon')} />
                                         </button>
                                     </Link>
                                 </div>
