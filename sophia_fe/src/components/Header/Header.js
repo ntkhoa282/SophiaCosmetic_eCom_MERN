@@ -22,7 +22,6 @@ const cx = classNames.bind(styles);
 function Header() {
     const currentUser = useSelector((state) => state.auth.login.currentUser);
 
-    //Logout func is not complete!
     const accessToken = currentUser?.accessToken;
     const id = currentUser?._id;
     const dispatch = useDispatch();

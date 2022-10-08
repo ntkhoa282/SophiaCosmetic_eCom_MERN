@@ -8,22 +8,35 @@ const authController = {
   //[POST] /auth/register
   registerUser: async (req, res) => {
     try {
-      const salt = await bcrypt.genSalt(10);
-      const hashed = await bcrypt.hash(req.body.password, salt);
+      const username = await User.findOne({ username: req.body.username });
+      const phone = await User.findOne({ phone: req.body.phone });
 
-      //Create new user
-      const newUser = await new User({
-        username: req.body.username,
-        name: req.body.name,
-        email: req.body.email,
-        phone: req.body.phone,
-        address: req.body.address,
-        password: hashed,
-      });
+      if (!username && !phone) {
+        const salt = await bcrypt.genSalt(10);
+        const hashed = await bcrypt.hash(req.body.password, salt);
+        //Create new user
+        const newUser = await new User({
+          username: req.body.username,
+          name: req.body.name,
+          email: req.body.email,
+          phone: req.body.phone,
+          address: req.body.address,
+          password: hashed,
+        });
 
-      //Save user to db
-      const user = await newUser.save();
-      return res.status(200).json(user);
+        //Save user to db
+        const user = await newUser.save();
+        return res.status(201).json(user);
+      } else {
+        if (username) {
+          return res.status(500).json("Tên đăng nhập đã tồn tại");
+        }
+        if (phone) {
+          return res
+            .status(500)
+            .json("Số điện thoại của bạn đã được đăng kí tài khoản khác");
+        }
+      }
     } catch (error) {
       return res.status(500).json(error);
     }
@@ -58,14 +71,14 @@ const authController = {
     try {
       const user = await User.findOne({ username: req.body.username });
       if (!user) {
-        res.status(404).json("Tên đăng nhập hoặc mật khẩu không đúng!");
+        return res.status(404).json("Tên đăng nhập hoặc mật khẩu không đúng!");
       }
       const validPassword = await bcrypt.compare(
         req.body.password,
         user.password
       );
       if (!validPassword) {
-        res.status(404).json("Tên đăng nhập hoặc mật khẩu không đúng!");
+        return res.status(404).json("Tên đăng nhập hoặc mật khẩu không đúng!");
       }
       if (user && validPassword) {
         const accessToken = authController.generateAccessToken(user);
@@ -109,7 +122,7 @@ const authController = {
         path: "/",
         sameSite: "strict",
       });
-      res.status(200).json({ accessToken: newAccessToken });
+      return res.status(200).json({ accessToken: newAccessToken });
     });
   },
 
@@ -119,7 +132,7 @@ const authController = {
     refreshTokens = refreshTokens.filter(
       (token) => token !== req.cookies.refreshToken
     );
-    res.status(200).json("Logged out !");
+    return res.status(200).json("Logged out !");
   },
 };
 

@@ -19,6 +19,7 @@ export const loginUser = async (user, dispatch, navigate) => {
         navigate('/');
     } catch (error) {
         dispatch(loginFailed());
+        alert(error.response.data);
     }
 };
 
@@ -30,6 +31,7 @@ export const registerUser = async (user, dispatch, navigate) => {
         navigate('/login');
     } catch (error) {
         dispatch(registerFailed());
+        alert(error.response.data);
     }
 };
 

@@ -17,7 +17,7 @@ function Login() {
         formState: { errors },
     } = useForm({ mode: 'onSubmit' });
 
-    const onSubmit = (data, e) => {
+    const onSubmit = (data) => {
         const user = {
             username: data.username,
             password: data.password,
