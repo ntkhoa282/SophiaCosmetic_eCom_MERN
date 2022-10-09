@@ -20,6 +20,7 @@ const authController = {
           name: req.body.name,
           email: req.body.email,
           phone: req.body.phone,
+          birthday: req.body.birthday,
           address: req.body.address,
           password: hashed,
         });

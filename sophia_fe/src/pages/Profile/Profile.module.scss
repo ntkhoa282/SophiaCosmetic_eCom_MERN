@@ -1,0 +1,78 @@
+.feature {
+    margin: 63px 0;
+
+    h4 {
+        font-weight: 700;
+        font-size: 33px;
+        line-height: 35px;
+        color: #346734;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        color: #346734;
+        text-decoration: none;
+
+        :hover {
+            color: #ffa500;
+        }
+    }
+
+    svg {
+        height: 18px;
+    }
+}
+.information {
+    background: #ffffff;
+    box-shadow: 0px 4px 22px rgba(79, 79, 79, 0.6);
+    padding: 54px 36px;
+    border-radius: 15px;
+}
+
+.name {
+    color: #1f601f !important;
+    font-size: 22px;
+    font-style: italic;
+}
+
+.info-label {
+    p {
+        color: #346734;
+        padding: 50px 0 0 15px;
+        margin: 0;
+    }
+}
+
+.info-input {
+    margin-top: 30px;
+
+    input {
+        border: 1px solid #1f601f;
+        box-sizing: border-box;
+        border-radius: 10px;
+        padding: 16px 18px;
+    }
+}
+
+.change-pass {
+    margin-bottom: 0 !important; 
+    a {
+        font-weight: bold;
+
+        :hover {
+            color: #ffa500;
+        }
+    }
+}
+
+.update-btn {
+    color: #fff;
+    font-weight: bold;
+    background: #5ca259;
+    padding: 17px;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    width: 100%;
+}

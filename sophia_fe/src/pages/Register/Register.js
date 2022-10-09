@@ -24,7 +24,8 @@ function Register() {
             name: data.name,
             email: data.email,
             phone: data.tel,
-            address: null,
+            address: '',
+            birthday: '',
             password: data.password,
         };
         registerUser(newUser, dispatch, navigate);

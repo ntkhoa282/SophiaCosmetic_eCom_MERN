@@ -10,6 +10,25 @@ const userController = {
       return res.status(500).json(error);
     }
   },
+  //[GET] /user/:id get-info-an-user
+  getInfoUser: async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      return res.status(200).json(user);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
+  //[PUT] /user/update/:id update info user
+  updateInfoUser: async (req, res) => {
+    try {
+      const info = await User.findById(req.params.id);
+      await info.updateOne({ $set: req.body });
+      return res.status(200).json("Cập nhật thành công");
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
   //[DELETE] /user/:id delete-user
   deleteUser: async (req, res) => {
     try {

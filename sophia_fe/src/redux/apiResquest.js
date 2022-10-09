@@ -10,6 +10,7 @@ import {
     logOutSuccess,
     logOutFailed,
 } from './authSlice';
+import { updateInfoFailed, updateInfoStart, updateInfoSuccess } from './userSlice';
 
 export const loginUser = async (user, dispatch, navigate) => {
     dispatch(loginStart());
@@ -45,5 +46,19 @@ export const logOut = async (dispatch, id, navigate, accessToken, axiosJWT) => {
         navigate('/');
     } catch (err) {
         dispatch(logOutFailed());
+    }
+};
+
+export const updateInfo = async (dispatch, id, info, navigate, accessToken, axiosJWT) => {
+    dispatch(updateInfoStart());
+    try {
+        await axiosJWT.put('http://localhost:8000/user/update/' + id, info, {
+            headers: { token: `Bearer ${accessToken}` },
+        });
+        dispatch(updateInfoSuccess());
+        navigate('/login');
+        await alert('Vui lòng đăng nhập lại để cập nhật thông tin');
+    } catch (error) {
+        dispatch(updateInfoFailed());
     }
 };

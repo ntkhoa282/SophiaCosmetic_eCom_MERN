@@ -35,7 +35,7 @@ function Header() {
     const MENU_ITEMS = [
         {
             to: '/profile',
-            menuTitle: 'Thông tin tài khoản',
+            menuTitle: 'Tài khoản của tôi',
         },
         {
             to: '/my-order',
@@ -85,8 +85,8 @@ function Header() {
                                             type="button"
                                             onClick={handleLogout}
                                         >
-                                            <span>Đăng xuất</span>
                                             <FontAwesomeIcon icon={faArrowRightFromBracket} className={cx('icon')} />
+                                            <span>Đăng xuất</span>
                                         </button>
                                     </Link>
                                 </div>

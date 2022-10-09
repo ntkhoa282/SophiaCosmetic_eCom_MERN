@@ -5,7 +5,7 @@ import Login from '~/pages/Login/Login';
 import Register from '~/pages/Register/Register';
 import OrderPage from '~/pages/OrderPage';
 import CartPage from '~/pages/CartPage';
-import Profile from '~/pages/Profile';
+import Profile from '~/pages/Profile/Profile';
 
 const publicRoutes = [
     { path: '/', element: <HomePage /> },
