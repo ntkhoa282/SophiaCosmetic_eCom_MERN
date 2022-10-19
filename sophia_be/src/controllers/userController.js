@@ -24,7 +24,7 @@ const userController = {
     try {
       const info = await User.findById(req.params.id);
       await info.updateOne({ $set: req.body });
-      return res.status(200).json("Cập nhật thành công");
+      return res.status(200).json(info);
     } catch (error) {
       return res.status(500).json(error);
     }

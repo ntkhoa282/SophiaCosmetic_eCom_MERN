@@ -32,6 +32,8 @@ function Header() {
         logOut(dispatch, id, navigate, accessToken, axiosJWT);
     };
 
+    const cate = useSelector((state) => state.category.category);
+
     const MENU_ITEMS = [
         {
             to: '/profile',
@@ -131,21 +133,18 @@ function Header() {
                                         Về Sophia
                                     </Link>
                                 </li>
-                                <li className={cx('nav-item')}>
-                                    <Link to="/product" className={cx('nav-link', 'active', 'link-item')}>
-                                        Trang điểm
-                                    </Link>
-                                </li>
-                                <li className={cx('nav-item')}>
-                                    <Link to="/product" className={cx('nav-link', 'active', 'link-item')}>
-                                        Chăm sóc da
-                                    </Link>
-                                </li>
-                                <li className={cx('nav-item')}>
-                                    <Link to="/product" className={cx('nav-link', 'active', 'link-item')}>
-                                        Chăm sóc tóc
-                                    </Link>
-                                </li>
+
+                                {cate.map((category) => (
+                                    <li className={cx('nav-item')} key={category._id}>
+                                        <Link
+                                            to={'/' + category.slug}
+                                            className={cx('nav-link', 'active', 'link-item')}
+                                        >
+                                            {category.title}
+                                        </Link>
+                                    </li>
+                                ))}
+
                                 <li className={cx('nav-item')}>
                                     <div className={cx('nav-link', 'active')}>
                                         <FontAwesomeIcon className={cx('hotline-icon')} icon={faPhone} /> Hotline

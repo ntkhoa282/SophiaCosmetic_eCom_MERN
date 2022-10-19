@@ -10,6 +10,7 @@ import {
     logOutSuccess,
     logOutFailed,
 } from './authSlice';
+import { cateFailed, cateStart, cateSuccess } from './cateSlice';
 import { updateInfoFailed, updateInfoStart, updateInfoSuccess } from './userSlice';
 
 export const loginUser = async (user, dispatch, navigate) => {
@@ -57,8 +58,18 @@ export const updateInfo = async (dispatch, id, info, navigate, accessToken, axio
         });
         dispatch(updateInfoSuccess());
         navigate('/login');
-        await alert('Vui lòng đăng nhập lại để cập nhật thông tin');
+        alert(' Vui lòng đăng nhập lại để cập nhật thông tin ');
     } catch (error) {
         dispatch(updateInfoFailed());
+    }
+};
+
+export const getCategory = async (dispatch) => {
+    dispatch(cateStart());
+    try {
+        const res = await axios.get('http://localhost:8000/category');
+        dispatch(cateSuccess(res.data));
+    } catch (error) {
+        dispatch(cateFailed());
     }
 };

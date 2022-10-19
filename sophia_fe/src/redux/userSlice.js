@@ -4,7 +4,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         info: {
-            currentUser: null,
+            infoUser: null,
             isFetching: false,
             error: false,
         },
@@ -14,8 +14,8 @@ const userSlice = createSlice({
             state.info.isFetching = true;
         },
         updateInfoSuccess: (state, action) => {
-            state.info.currentUser = action.payload;
             state.info.isFetching = false;
+            state.info.infoUser = action.payload;
             state.info.error = false;
         },
         updateInfoFailed: (state) => {
