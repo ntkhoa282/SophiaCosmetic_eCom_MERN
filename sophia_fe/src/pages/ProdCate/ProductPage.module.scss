@@ -1,3 +1,35 @@
 .feature {
-  margin: 63px 0;
+    margin: 63px 0;
+}
+
+.pathtitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1f601f;
+    margin-bottom: 40px;
+}
+
+.sidebar-title {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 23px;
+    color: #1f601f;
+}
+
+.prodlist-title {
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 31px;
+    color: #1f601f;
+    margin-left: 10px;
+}
+
+.sort-select {
+    background: #b3e2b3;
+    padding: 8px 12px;
+    width: 200px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 1px solid #b3e2b3;
 }

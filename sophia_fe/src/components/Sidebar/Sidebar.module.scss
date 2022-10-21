@@ -1,0 +1,28 @@
+.sidebar {
+    ul {
+        list-style: none !important;
+        margin-top: 20px;
+
+        li {
+            padding-top: 15px;
+        }
+    }
+}
+.nav-list {
+    padding-left: 0;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 12px;
+    white-space: nowrap;
+    margin-right: 13px;
+    border-left: 3px solid #fff;
+    color: #1f601f;
+}
+
+.sidebar-icon {
+}

@@ -6,7 +6,7 @@ import httpRequest from '~/ultis/httpRequest';
 
 const cx = classNames.bind(styles);
 
-function ProdList({ category }) {
+function ProdList({ category, sort }) {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
