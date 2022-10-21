@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './ProductPage.module.scss';
@@ -21,6 +22,14 @@ function ProdList({ category, sort }) {
         getProducts();
     }, [category]);
 
+    useEffect(() => {
+        if (sort === 'desc') {
+            setProducts([...products].sort((a, b) => b.price - a.price));
+        } else if (sort === 'asc') {
+            setProducts([...products].sort((a, b) => a.price - b.price));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [sort]);
     return (
         <div className={cx('product-list', 'mt-3')}>
             <div className={cx('row')}>
@@ -41,5 +50,10 @@ function ProdList({ category, sort }) {
         </div>
     );
 }
+
+ProdList.propTypes = {
+    category: PropTypes.node,
+    sort: PropTypes.string,
+};
 
 export default ProdList;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './ProductItem.module.scss';
@@ -21,5 +22,12 @@ function ProductItem({ title, to, imgURL, price }) {
         </div>
     );
 }
+
+ProductItem.propTypes = {
+    title: PropTypes.string,
+    to: PropTypes.string,
+    imgURL: PropTypes.object,
+    price: PropTypes.number,
+};
 
 export default ProductItem;

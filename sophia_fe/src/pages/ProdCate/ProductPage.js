@@ -35,7 +35,7 @@ function ProductPage() {
             break;
     }
 
-    const [sort, setSort] = useState();
+    const [sort, setSort] = useState('');
 
     const handleSort = (e) => {
         let value = e.target.value;
@@ -73,6 +73,7 @@ function ProductPage() {
                 </div>
             </div>
         </div>
+        
     );
 }
 
