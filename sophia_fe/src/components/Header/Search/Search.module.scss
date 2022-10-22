@@ -39,22 +39,62 @@
 }
 
 .search-result {
-    background-color: #d9f3d9;
+    background-color: #edfbed;
     display: flex;
     flex-direction: column;
     width: 500px;
     border-radius: 15px;
 }
 
+.clear-btn,
+.loading {
+    position: absolute;
+    right: 52px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(22, 24, 35, 0.34);
+    right: 75px;
+    border: none;
+    background-color: transparent;
+}
+
+.loading {
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+//search item
 .wrapper {
     display: flex;
     align-items: center;
     padding: 9px 16px;
     text-decoration: none;
+    border-radius: 15px;
 
     &:hover {
         background: rgba(22, 24, 35, 0.2);
     }
+}
+
+.prod-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.info {
+    flex: 1;
+    margin-left: 12px;
+    padding-top: 10px;
 }
 
 .title {

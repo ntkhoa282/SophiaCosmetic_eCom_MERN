@@ -1,4 +1,4 @@
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -13,10 +13,11 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
-    const debounceValue = useDebounce(searchValue, 2000);
+    const debounceValue = useDebounce(searchValue, 1000);
 
     useEffect(() => {
         if (!debounceValue.trim()) {
@@ -26,8 +27,10 @@ function Search() {
 
         const fetchApi = async () => {
             try {
+                setLoading(true);
                 const result = await httpRequest.get(`/product/search?q=${debounceValue}`);
                 setSearchResult(result.data);
+                setLoading(false);
             } catch (error) {
                 console.log(error);
             }
@@ -35,6 +38,12 @@ function Search() {
 
         fetchApi();
     }, [debounceValue]);
+
+    const handleClear = () => {
+        setSearchValue('');
+        setSearchResult([]);
+        inputRef.current.focus();
+    };
 
     const handleHideResult = () => {
         setShowResult(false);
@@ -57,6 +66,10 @@ function Search() {
         </div>
     );
 
+    console.log(searchValue);
+
+    console.log(searchResult);
+
     return (
         <div className={cx('col-lg-5', 'col-md-8')}>
             <HeadlessTippy
@@ -64,7 +77,7 @@ function Search() {
                 onClickOutside={handleHideResult}
                 visible={showResult && searchResult.length > 0}
                 render={renderResult}
-                placement="bottom-end"
+                placement="bottom"
             >
                 <div className={cx('search')}>
                     <input
@@ -73,8 +86,18 @@ function Search() {
                         spellCheck="false"
                         ref={inputRef}
                         onChange={handleChange}
+                        value={searchValue}
                         onFocus={() => setShowResult(true)}
                     />
+
+                    {!!searchValue && !loading && (
+                        <button className={cx('clear-btn')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    )}
+
+                    {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
+
                     <button className={cx('search-img')} onMouseDown={(e) => e.preventDefault()}>
                         <FontAwesomeIcon className={cx('search-icon')} icon={faMagnifyingGlass} />
                     </button>
