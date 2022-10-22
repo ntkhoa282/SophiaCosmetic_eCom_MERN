@@ -15,7 +15,7 @@ import { createAxios } from '~/ultis/createInstance';
 import styles from './Header.module.scss';
 import Search from './Search/Search';
 import Menu from './Menu/Menu';
-import { logOut } from '~/redux/apiResquest';
+import { getCategory, logOut } from '~/redux/apiResquest';
 import { logOutSuccess } from '~/redux/authSlice';
 
 const cx = classNames.bind(styles);
@@ -33,6 +33,10 @@ function Header() {
     };
 
     const cate = useSelector((state) => state.category.category);
+
+    if (!cate) {
+        getCategory(dispatch);
+    }
 
     const MENU_ITEMS = [
         {

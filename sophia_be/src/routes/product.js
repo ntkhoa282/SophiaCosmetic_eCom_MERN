@@ -19,6 +19,8 @@ const upload = multer({ storage: storage });
 
 //add a product
 router.post("/add", upload.single("image"), productController.addProduct);
+//search products
+router.get("/search", productController.searchProduct);
 //get all products
 router.get("/all-products", productController.getAllProduct);
 //get a product

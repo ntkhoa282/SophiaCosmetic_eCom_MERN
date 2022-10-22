@@ -59,6 +59,20 @@ const productController = {
       return res.status(404).json(error);
     }
   },
+  //[GET] /product/search?(query)
+  searchProduct: async (req, res) => {
+    const queryName = req.query.q;
+    try {
+      const prods = await Product.find({
+        title: new RegExp(queryName, "i"),
+      }).populate("category");
+      return res.status(200).json(prods);
+    } catch (error) {
+      console.log(error);
+
+      return res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = productController;
