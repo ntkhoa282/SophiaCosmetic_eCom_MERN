@@ -45,6 +45,30 @@ const productController = {
       return res.status(500).json(error);
     }
   },
+  //[GET] /product/newest (4)
+  getNewestProducts: async (req, res) => {
+    try {
+      const newestProd = await Product.find()
+        .sort({ createdAt: -1 })
+        .limit(4)
+        .populate("category");
+      return res.status(200).json(newestProd);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
+  //[GET] /product/bestsold (4)
+  getBestSoldProducts: async (req, res) => {
+    try {
+      const bestSoldProd = await Product.find()
+        .sort({ sold: -1 })
+        .limit(4)
+        .populate("category");
+      return res.status(200).json(bestSoldProd);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
   //[GET] /product/[query]
   findProductByCategory: async (req, res) => {
     const queryCategory = req.query.cate;

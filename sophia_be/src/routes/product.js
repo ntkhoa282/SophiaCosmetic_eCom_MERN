@@ -23,9 +23,13 @@ router.post("/add", upload.single("image"), productController.addProduct);
 router.get("/search", productController.searchProduct);
 //get all products
 router.get("/all-products", productController.getAllProduct);
-//get a product
-router.get("/:id", productController.getProductById);
 //get products by category
 router.get("/", productController.findProductByCategory);
+//get newest products
+router.get("/newest", productController.getNewestProducts);
+//get best sold products
+router.get("/bestsold", productController.getBestSoldProducts);
+//get a product
+router.get("/:id", productController.getProductById);
 
 module.exports = router;

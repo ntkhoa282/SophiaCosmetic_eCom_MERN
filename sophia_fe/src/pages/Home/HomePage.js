@@ -1,8 +1,39 @@
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ProductItem from '~/components/ProductItem/ProductItem';
+import httpRequest from '~/ultis/httpRequest';
 import styles from './HomePage.module.scss';
 
 const cx = classNames.bind(styles);
 function HomePage() {
+    const [newestProducts, setNewestProducts] = useState([]);
+    const [bestSoldProducts, setBestSoldProducts] = useState([]);
+
+    useEffect(() => {
+        const getNewestProducts = async () => {
+            try {
+                const res = await httpRequest.get('/product/newest');
+                setNewestProducts(res.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getNewestProducts();
+
+        const getBestSoldProducts = async () => {
+            try {
+                const res = await httpRequest.get('/product/bestsold');
+                setBestSoldProducts(res.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getBestSoldProducts();
+    }, []);
+
+    console.log('re-render');
+
     return (
         <>
             <div className={cx('banner')}>
@@ -65,6 +96,100 @@ function HomePage() {
                                     <p>Mua theo combo, càng</p>
                                     <p>mua càng rẻ</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={cx('container')}>
+                <div className={cx('product')}>
+                    <div className={cx('d-flex', 'justify-content-center')}>
+                        <div className={cx('title-product')}>
+                            <p>SẢN PHẨM MỚI VỀ</p>
+                        </div>
+                    </div>
+                    <div className={cx('product-list')}>
+                        <div className={cx('row')}>
+                            {bestSoldProducts.map((prods) =>
+                                prods.inStock === true ? (
+                                    <ProductItem
+                                        key={prods?._id}
+                                        to={`/${prods.category.slug}/${prods.slug}`}
+                                        title={prods.title}
+                                        imgURL={prods.image}
+                                        price={prods.price}
+                                    />
+                                ) : (
+                                    ''
+                                ),
+                            )}
+                        </div>
+                    </div>
+                    <div className={cx('mt-5')}>
+                        <div className={cx('row')}>
+                            <div className={cx('col-md-6')}>
+                                <img
+                                    src={require('~/assets/images/homepage-img-1.png')}
+                                    style={{ width: '100%' }}
+                                    alt="homepageimage"
+                                />
+                            </div>
+                            <div className={cx('col-md-6')}>
+                                <img
+                                    src={require('~/assets/images/homepage-img-2.png')}
+                                    style={{ width: '100%' }}
+                                    alt="homepageimage"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className={cx('d-flex', 'justify-content-center')}>
+                        <div className={cx('title-product')}>
+                            <p>SẢN PHẨM BÁN CHẠY NHẤT</p>
+                        </div>
+                    </div>
+                    <div className={cx('product-list')}>
+                        <div className={cx('row')}>
+                            {newestProducts.map((prods) =>
+                                prods.inStock === true ? (
+                                    <ProductItem
+                                        key={prods?._id}
+                                        to={`/${prods.category.slug}/${prods.slug}`}
+                                        title={prods.title}
+                                        imgURL={prods.image}
+                                        price={prods.price}
+                                    />
+                                ) : (
+                                    ''
+                                ),
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                <div className={cx('news')}>
+                    <div className={cx('row', 'mt-5')}>
+                        <div className={cx('col-lg-5', 'col-md-12')}>
+                            <img
+                                src={require('~/assets/images/homepage-img-3.png')}
+                                style={{ width: '100%' }}
+                                alt="homepageimage"
+                            />
+                        </div>
+                        <div className={cx('col-lg-7', 'col-md-12')}>
+                            <div className={cx('new-content')}>
+                                <h3>Sophia - Save The Best For You</h3>
+                                <p>Chỉ là một câu chuyện nhỏ để các bạn hiểu được mình sẽ tìm được gì tại Sophia...</p>
+                                <p>Tại sao Sophia lại chỉ muốn là một cửa hàng nhỏ chứ không phải một drugstores?</p>
+                                <p>“Save The Best For You” – Slogan cũng như định hướng hoạt động của Sophia.</p>
+                                <p>Chúng mình làm việc với mục tiêu và định hướng là mang đến những sản phẩm tốt </p>
+                                <p>nhất đến tay mỗi người. Nên có thể tại Sophia bạn không thể tìm thấy đa dạng sản </p>
+                                <p>phẩm như ở một drugstores, bởi vì những gì “tốt nhất”, Sophia đã “chọn lọc” sẵn </p>
+                                <p>cho các bạn rồi.</p>
+
+                                <button type="button" className={cx('btn', 'btn-warning')}>
+                                    <Link to="/about">Xem thêm</Link>
+                                </button>
                             </div>
                         </div>
                     </div>

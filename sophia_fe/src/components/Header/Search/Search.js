@@ -66,10 +66,6 @@ function Search() {
         </div>
     );
 
-    console.log(searchValue);
-
-    console.log(searchResult);
-
     return (
         <div className={cx('col-lg-5', 'col-md-8')}>
             <HeadlessTippy
