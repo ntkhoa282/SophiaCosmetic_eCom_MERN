@@ -2,13 +2,24 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './Search.module.scss';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { getDetailProduct } from '~/redux/apiResquest';
 
 const cx = classNames.bind(styles);
 function SearchItem({ data }) {
     const base64String = btoa(String.fromCharCode(...new Uint8Array(data.image.data.data)));
+
+    const dispatch = useDispatch();
+
     return (
         <div>
-            <Link to={`/${data.category.slug}/${data.slug}`} className={cx('wrapper')}>
+            <Link
+                to={`/${data.category.slug}/${data.slug}`}
+                className={cx('wrapper')}
+                onClick={() => {
+                    getDetailProduct(dispatch, data._id);
+                }}
+            >
                 <img src={`data:image/png;base64,${base64String}`} alt={data.title} className={cx('prod-img')} />
                 <div className={cx('info')}>
                     <h4 className={cx('title')}>{data.title}</h4>

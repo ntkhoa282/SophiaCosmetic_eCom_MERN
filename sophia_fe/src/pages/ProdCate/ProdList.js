@@ -30,6 +30,7 @@ function ProdList({ category, sort }) {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sort]);
+
     return (
         <div className={cx('product-list', 'mt-3')}>
             <div className={cx('row')}>
@@ -41,6 +42,7 @@ function ProdList({ category, sort }) {
                             title={prods.title}
                             imgURL={prods.image}
                             price={prods.price}
+                            id={prods?._id}
                         />
                     ) : (
                         ''

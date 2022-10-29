@@ -1,0 +1,116 @@
+.feature {
+    margin: 63px 0;
+}
+
+.prod-title {
+    font-weight: 700 !important;
+    font-size: 25px;
+    line-height: 37px !important;
+    color: #1f601f;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 35px;
+    color: #000000;
+    opacity: 0.7;
+}
+
+.quantity-btn {
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+    .quantity-plus {
+        border: none;
+        background-color: rgba($color: #37ad37, $alpha: 0.2);
+        height: 100%;
+        width: 100%;
+        border-radius: 0 12px 12px 0;
+        font-weight: 500;
+        font-size: 22px;
+        color: #1f601f;
+        border-left: #ccc solid 2px;
+    }
+
+    .quantity-minus {
+        border: none;
+        background-color: rgba($color: #37ad37, $alpha: 0.2);
+        height: 100%;
+        width: 100%;
+        border-radius: 12px 0px 0px 12px;
+        font-weight: 500;
+        font-size: 22px;
+        color: #1f601f;
+        border-right: #ccc solid 2px;
+    }
+
+    .quantity-number {
+        border: none;
+        text-align: center;
+        height: 100%;
+        width: 180px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #1f601f;
+    }
+}
+
+.instore {
+    font-weight: 300;
+    font-size: 14px;
+    color: rgb(164, 164, 164);
+    padding-top: 12px;
+}
+
+.add-to-cart-btn {
+    background: #ffa500;
+    height: 50px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #fff;
+    border: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.phiShip {
+    padding: 16px 25px;
+    background: #f4f5ef;
+}
+.shipLeft {
+    border-right: 1px solid;
+    text-align: center;
+
+    img {
+        padding-top: 20px;
+    }
+}
+
+.green {
+    color: #1f601f !important;
+}
+
+.ttsp {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    color: #000000;
+    text-align: center;
+}
+
+.desc {
+    font-size: 16px;
+    line-height: 35px;
+    text-align: justify;
+}

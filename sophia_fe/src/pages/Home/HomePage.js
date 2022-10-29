@@ -32,8 +32,6 @@ function HomePage() {
         getBestSoldProducts();
     }, []);
 
-    console.log('re-render');
-
     return (
         <>
             <div className={cx('banner')}>
@@ -118,6 +116,7 @@ function HomePage() {
                                         title={prods.title}
                                         imgURL={prods.image}
                                         price={prods.price}
+                                        id={prods?._id}
                                     />
                                 ) : (
                                     ''
@@ -158,6 +157,7 @@ function HomePage() {
                                         title={prods.title}
                                         imgURL={prods.image}
                                         price={prods.price}
+                                        id={prods?._id}
                                     />
                                 ) : (
                                     ''

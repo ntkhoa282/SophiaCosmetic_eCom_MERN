@@ -2,12 +2,22 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './ProductItem.module.scss';
+import { useDispatch } from 'react-redux';
+import { getDetailProduct } from '~/redux/apiResquest';
 
 const cx = classNames.bind(styles);
-function ProductItem({ title, to, imgURL, price }) {
+function ProductItem({ title, to, imgURL, price, id }) {
     const base64String = btoa(String.fromCharCode(...new Uint8Array(imgURL.data.data)));
+
+    const dispatch = useDispatch();
+
     return (
-        <div className={cx('col-lg-3', 'col-md-6', 'mt-4')}>
+        <div
+            className={cx('col-lg-3', 'col-md-6', 'mt-4')}
+            onClick={() => {
+                getDetailProduct(dispatch, id);
+            }}
+        >
             <Link to={to}>
                 <div className={cx('product-item')}>
                     <img src={`data:image/png;base64,${base64String}`} alt={title} />
@@ -28,6 +38,7 @@ ProductItem.propTypes = {
     to: PropTypes.string,
     imgURL: PropTypes.object,
     price: PropTypes.number,
+    id: PropTypes.string,
 };
 
 export default ProductItem;

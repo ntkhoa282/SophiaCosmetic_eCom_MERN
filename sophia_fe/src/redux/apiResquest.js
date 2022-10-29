@@ -11,6 +11,7 @@ import {
     logOutFailed,
 } from './authSlice';
 import { cateFailed, cateStart, cateSuccess } from './cateSlice';
+import { productFailed, productStart, productSuccess } from './productSlice';
 import { updateInfoFailed, updateInfoStart, updateInfoSuccess } from './userSlice';
 
 export const loginUser = async (user, dispatch, navigate) => {
@@ -71,5 +72,15 @@ export const getCategory = async (dispatch) => {
         dispatch(cateSuccess(res.data));
     } catch (error) {
         dispatch(cateFailed());
+    }
+};
+
+export const getDetailProduct = async (dispatch, prodID) => {
+    dispatch(productStart());
+    try {
+        const res = await axios.get('http://localhost:8000/product/' + prodID);
+        dispatch(productSuccess(res.data));
+    } catch (error) {
+        dispatch(productFailed());
     }
 };
