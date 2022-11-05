@@ -4,6 +4,9 @@ import { getUserCart, removeCartProd } from '~/redux/apiResquest';
 import classNames from 'classnames/bind';
 import styles from './CartPage.module.scss';
 import CartProdItem from './CartProdItem';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeftLong, faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -77,6 +80,22 @@ function CartPage() {
                                         products.length === 0 ? 0 : TOTAL_PROD + SHIPPING_FEE,
                                     )}
                                 </p>
+                            </div>
+                            <div className={cx('mt-4')}>
+                                <Link to="/order">
+                                    <button className={cx('order-btn')}>
+                                        Tiến hành đặt hàng
+                                        <FontAwesomeIcon icon={faArrowRightLong} />
+                                    </button>
+                                </Link>
+                            </div>
+                            <div className={cx('mt-4')}>
+                                <Link to="/">
+                                    <button className={cx('shopping-btn')}>
+                                        <FontAwesomeIcon icon={faArrowLeftLong} />
+                                        Tiếp tục mua hàng
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

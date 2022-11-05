@@ -3,7 +3,8 @@ import AboutPage from '~/pages/About/AboutPage';
 import HomePage from '~/pages/Home/HomePage';
 import Login from '~/pages/Login/Login';
 import Register from '~/pages/Register/Register';
-import OrderPage from '~/pages/OrderPage';
+import MyOrderPage from '~/pages/MyOrderPage';
+import OrderPage from '~/pages/OrderPage/OrderPage';
 import CartPage from '~/pages/CartPage/CartPage';
 import Profile from '~/pages/Profile/Profile';
 import DetailPage from '~/pages/Detail/Detail';
@@ -18,7 +19,8 @@ const publicRoutes = [
 ];
 
 const privateRoutes = [
-    { path: '/my-order', element: <OrderPage /> },
+    { path: '/my-order', element: <MyOrderPage /> },
+    { path: '/order', element: <OrderPage /> },
     { path: '/my-cart', element: <CartPage /> },
     { path: '/profile', element: <Profile /> },
 ];
