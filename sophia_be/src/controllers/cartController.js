@@ -66,8 +66,8 @@ const cartController = {
       return res.status(500).json(error);
     }
   },
-  //[POST] /cart/deleteitem
-  deleteProductInCart: async (req, res) => {
+  //[POST] /cart/removeitem
+  removeProductInCart: async (req, res) => {
     try {
       const userId = req.query.user;
       const prodId = req.query.prod;
@@ -84,8 +84,14 @@ const cartController = {
           await Cart.updateOne({
             $pull: { products: cart.products[itemIndex] },
           });
+          cart = await Cart.findOne({ userID: userId }).populate({
+            path: "products",
+            populate: {
+              path: "productID",
+            },
+          });
         }
-        res.status(200).json("Delete successfully");
+        res.status(200).json(cart);
       }
     } catch (error) {
       console.log(error);

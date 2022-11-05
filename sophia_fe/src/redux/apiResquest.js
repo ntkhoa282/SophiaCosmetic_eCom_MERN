@@ -10,6 +10,15 @@ import {
     logOutSuccess,
     logOutFailed,
 } from './authSlice';
+import {
+    getUserCartFailed,
+    getUserCartStart,
+    getUserCartSuccess,
+    logOutCart,
+    removeCartProdFailed,
+    removeCartProdStart,
+    removeCartProdSuccess,
+} from './cartSlice';
 import { cateFailed, cateStart, cateSuccess } from './cateSlice';
 import { productFailed, productStart, productSuccess } from './productSlice';
 import { updateInfoFailed, updateInfoStart, updateInfoSuccess } from './userSlice';
@@ -45,6 +54,7 @@ export const logOut = async (dispatch, id, navigate, accessToken, axiosJWT) => {
             headers: { token: `Bearer ${accessToken}` },
         });
         dispatch(logOutSuccess());
+        dispatch(logOutCart());
         navigate('/');
     } catch (err) {
         dispatch(logOutFailed());
@@ -82,5 +92,25 @@ export const getDetailProduct = async (dispatch, prodID) => {
         dispatch(productSuccess(res.data));
     } catch (error) {
         dispatch(productFailed());
+    }
+};
+
+export const getUserCart = async (dispatch, userid) => {
+    dispatch(getUserCartStart());
+    try {
+        const res = await axios.get(`http://localhost:8000/cart/user-cart/${userid}`);
+        dispatch(getUserCartSuccess(res.data));
+    } catch (error) {
+        dispatch(getUserCartFailed());
+    }
+};
+
+export const removeCartProd = async (dispatch, userid, prodid) => {
+    dispatch(removeCartProdStart());
+    try {
+        const res = await axios.put(`http://localhost:8000/cart/removeitem?user=${userid}&prod=${prodid}`);
+        dispatch(removeCartProdSuccess(res.data));
+    } catch (error) {
+        dispatch(removeCartProdFailed());
     }
 };

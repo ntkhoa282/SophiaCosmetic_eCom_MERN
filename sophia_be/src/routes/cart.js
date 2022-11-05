@@ -8,7 +8,7 @@ router.post("/create", cartController.createCart);
 //user add to cart
 router.post("/addtocart", cartController.addToCart);
 //del a product in cart
-router.put("/deleteitem", cartController.deleteProductInCart);
+router.put("/removeitem", cartController.removeProductInCart);
 //get cart of user
 router.get("/user-cart/:id", cartController.getUserCart);
 

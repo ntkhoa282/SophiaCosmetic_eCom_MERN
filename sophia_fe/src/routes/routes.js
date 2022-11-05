@@ -4,7 +4,7 @@ import HomePage from '~/pages/Home/HomePage';
 import Login from '~/pages/Login/Login';
 import Register from '~/pages/Register/Register';
 import OrderPage from '~/pages/OrderPage';
-import CartPage from '~/pages/CartPage';
+import CartPage from '~/pages/CartPage/CartPage';
 import Profile from '~/pages/Profile/Profile';
 import DetailPage from '~/pages/Detail/Detail';
 

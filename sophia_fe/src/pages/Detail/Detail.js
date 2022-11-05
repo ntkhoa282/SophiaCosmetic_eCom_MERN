@@ -2,13 +2,19 @@ import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './Detail.module.scss';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import httpRequest from '~/ultis/httpRequest';
 
 const cx = classNames.bind(styles);
 
 function DetailPage() {
     const prodDetail = useSelector((state) => state.product.detail);
 
+    const currentUser = useSelector((state) => state.auth.login.currentUser);
+
     const base64String = btoa(String.fromCharCode(...new Uint8Array(prodDetail.image.data.data)));
+
+    const navigate = useNavigate();
 
     const [quantity, setQuantity] = useState(1);
 
@@ -27,6 +33,21 @@ function DetailPage() {
     const handleMinus = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
+        }
+    };
+
+    const handleAddToCart = () => {
+        if (currentUser) {
+            const cart = {
+                userID: currentUser?._id,
+                productID: prodDetail?._id,
+                quantity: quantity,
+                option: null,
+            };
+            httpRequest.post('/cart/addtocart', cart);
+        } else {
+            navigate('/login');
+            alert('Bạn cần đăng nhập để tiếp tục mua hàng');
         }
     };
 
@@ -49,9 +70,10 @@ function DetailPage() {
                                     prodDetail.price,
                                 )}
                             </p>
-                            <p style={{ color: '#999' }}>(Đã bao gồm VAT)</p>
+                            <span style={{ color: '#999' }}>(Đã bao gồm VAT)</span>
                         </div>
                         <div className={cx('mt-5')}>
+                            <p style={{ color: '#1f601f', fontWeight: '500', fontSize: '17px' }}>Số lượng:</p>
                             <div className={cx('quantity-btn')}>
                                 <button className={cx('quantity-minus')} type="button" onClick={handleMinus}>
                                     -
@@ -68,12 +90,7 @@ function DetailPage() {
                             <p className={cx('instore')}>{prodDetail.quantity} sản phẩm có sẵn</p>
                         </div>
                         <div className={cx('mt-4')}>
-                            <button
-                                className={cx('add-to-cart-btn')}
-                                onClick={() => {
-                                    console.log(quantity);
-                                }}
-                            >
+                            <button className={cx('add-to-cart-btn')} onClick={handleAddToCart}>
                                 Thêm vào giỏ hàng
                             </button>
                         </div>

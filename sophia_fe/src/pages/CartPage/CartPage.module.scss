@@ -1,0 +1,114 @@
+.feature {
+    margin: 63px 0;
+}
+
+.pathtitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1f601f;
+    margin-bottom: 40px;
+}
+
+.total-money {
+    background: #f4f5ef;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.total-money-title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+    color: #1f601f;
+}
+
+.prop {
+    p {
+        font-weight: 500;
+        font-size: 17px;
+    }
+}
+
+.message {
+    color: rgb(121, 121, 121, 0.6);
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+//product cart item
+.prod-title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    color: #1f601f;
+}
+
+.prod-del-button {
+    border: none;
+    background-color: transparent;
+    height: 24px;
+    svg {
+        height: 17px;
+        color:#1f601f;
+    }
+
+    :hover {
+        color: rgb(255, 70, 70, 1);
+    }
+}
+
+.quantity-btn {
+    height: 30px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+
+    .quantity-plus {
+        border: none;
+        background-color: rgba($color: #37ad37, $alpha: 0.2);
+        height: 100%;
+        width: 100%;
+        border-radius: 0 12px 12px 0;
+        font-weight: 500;
+        font-size: 18px;
+        color: #1f601f;
+        border-left: #ccc solid 2px;
+    }
+
+    .quantity-minus {
+        border: none;
+        background-color: rgba($color: #37ad37, $alpha: 0.2);
+        height: 100%;
+        width: 100%;
+        border-radius: 12px 0px 0px 12px;
+        font-weight: 500;
+        font-size: 18px;
+        color: #1f601f;
+        border-right: #ccc solid 2px;
+    }
+
+    .quantity-number {
+        border: none;
+        text-align: center;
+        height: 100%;
+        width: 65px;
+        font-weight: 500;
+        font-size: 16px;
+        color: #1f601f;
+    }
+}
+
+.prod-price {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 35px;
+    color: #ff8000;
+    opacity: 1;
+    padding-top: 20px;
+}
