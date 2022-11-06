@@ -9,13 +9,14 @@ import {
     faArrowRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames/bind';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { createAxios } from '~/ultis/createInstance';
 import styles from './Header.module.scss';
 import Search from './Search/Search';
 import Menu from './Menu/Menu';
-import { getCategory, logOut } from '~/redux/apiResquest';
+import { getCategory, getUserCart, logOut } from '~/redux/apiResquest';
 import { logOutSuccess } from '~/redux/authSlice';
 
 const cx = classNames.bind(styles);
@@ -34,9 +35,14 @@ function Header() {
 
     const cate = useSelector((state) => state.category.category);
 
-    if (!cate) {
-        getCategory(dispatch);
-    }
+    useEffect(() => {
+        if (!cate) {
+            getCategory(dispatch);
+        }
+        if (currentUser) {
+            getUserCart(dispatch, currentUser._id);
+        }
+    }, [dispatch, currentUser, cate]);
 
     const MENU_ITEMS = [
         {

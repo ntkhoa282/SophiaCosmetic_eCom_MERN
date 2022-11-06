@@ -11,6 +11,9 @@ import {
     logOutFailed,
 } from './authSlice';
 import {
+    addToCartFailed,
+    addToCartStart,
+    addToCartSuccess,
     getUserCartFailed,
     getUserCartStart,
     getUserCartSuccess,
@@ -92,6 +95,16 @@ export const getDetailProduct = async (dispatch, prodID) => {
         dispatch(productSuccess(res.data));
     } catch (error) {
         dispatch(productFailed());
+    }
+};
+
+export const addToCart = async (dispatch, cart) => {
+    dispatch(addToCartStart());
+    try {
+        const res = await axios.post('http://localhost:8000/cart/addtocart', cart);
+        dispatch(addToCartSuccess(res.data));
+    } catch (error) {
+        dispatch(addToCartFailed());
     }
 };
 

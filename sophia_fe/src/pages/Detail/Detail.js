@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './Detail.module.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import httpRequest from '~/ultis/httpRequest';
+import { addToCart } from '~/redux/apiResquest';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +15,8 @@ function DetailPage() {
     const base64String = btoa(String.fromCharCode(...new Uint8Array(prodDetail.image.data.data)));
 
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
 
     const [quantity, setQuantity] = useState(1);
 
@@ -44,7 +46,7 @@ function DetailPage() {
                 quantity: quantity,
                 option: null,
             };
-            httpRequest.post('/cart/addtocart', cart);
+            addToCart(dispatch, cart);
         } else {
             navigate('/login');
             alert('Bạn cần đăng nhập để tiếp tục mua hàng');

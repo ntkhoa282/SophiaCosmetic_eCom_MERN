@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
-import httpRequest from '~/ultis/httpRequest';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserCart } from '~/redux/apiResquest';
+import { addToCart } from '~/redux/apiResquest';
 
 const cx = classNames.bind(styles);
 
@@ -45,8 +44,7 @@ function CartProdItem({ data, onClickDel }) {
                 quantity: quantity,
                 option: null,
             };
-            await httpRequest.post('/cart/addtocart', cart);
-            await getUserCart(dispatch, currentUser?._id);
+            await addToCart(dispatch, cart);
         };
         fetchApi();
     }, [currentUser, quantity, data.productID._id, dispatch]);

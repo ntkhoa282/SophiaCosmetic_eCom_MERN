@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserCart, removeCartProd } from '~/redux/apiResquest';
+import { removeCartProd } from '~/redux/apiResquest';
 import classNames from 'classnames/bind';
 import styles from './CartPage.module.scss';
 import CartProdItem from './CartProdItem';
@@ -11,17 +10,13 @@ import { faArrowLeftLong, faArrowRightLong } from '@fortawesome/free-solid-svg-i
 const cx = classNames.bind(styles);
 
 function CartPage() {
-    const currentUser = useSelector((state) => state.auth.login.currentUser);
-
-    const SHIPPING_FEE = 25000;
-
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        getUserCart(dispatch, currentUser._id);
-    }, [dispatch, currentUser]);
+    const currentUser = useSelector((state) => state.auth.login.currentUser);
 
     const cartData = useSelector((state) => state.cart);
+
+    const SHIPPING_FEE = 25000;
 
     const products = cartData.products;
 
@@ -45,7 +40,6 @@ function CartPage() {
                                 <CartProdItem
                                     key={product?._id}
                                     data={product}
-                                    quantity={product.quantity}
                                     onClickDel={() => {
                                         handleRemoveProd(product.productID._id, currentUser._id);
                                     }}

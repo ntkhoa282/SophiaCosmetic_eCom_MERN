@@ -36,14 +36,26 @@ const cartController = {
           cart.products.push({ productID, quantity, option });
         }
         cart = await cart.save();
-        return res.status(200).json(cart);
+        const savedCart = await cart.populate({
+          path: "products",
+          populate: {
+            path: "productID",
+          },
+        });
+        return res.status(200).json(savedCart);
       } else {
         //no cart for user, create new cart
         const newCart = await Cart.create({
           userID: id,
           products: [{ productID, quantity, option }],
         });
-        return res.status(200).json(newCart);
+        const savedCart = await newCart.populate({
+          path: "products",
+          populate: {
+            path: "productID",
+          },
+        });
+        return res.status(200).json(savedCart);
       }
     } catch (error) {
       return res.status(500).json(error);
