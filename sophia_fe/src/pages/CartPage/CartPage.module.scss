@@ -52,6 +52,13 @@
     svg {
         padding: 0 5px;
     }
+
+    &:hover {
+        background: #ff9900;
+        svg {
+            transform: translateX(10px);
+        }
+    }
 }
 
 .shopping-btn {
@@ -68,6 +75,14 @@
 
     svg {
         padding: 0 5px;
+    }
+
+    &:hover {
+        background: #62b262;
+
+        svg {
+            transform: translateX(-10px);
+        }
     }
 }
 

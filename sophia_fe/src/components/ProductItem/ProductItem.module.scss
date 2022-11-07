@@ -10,6 +10,12 @@ a {
     img {
         width: 100%;
     }
+
+    &:hover {
+        border: 1px solid #37ad37;
+        box-shadow: 0 3px 10px rgba(112, 112, 112, 0.4);
+        transform: translateY(-1.5%);
+    }
 }
 
 .product-item_text {
@@ -29,4 +35,3 @@ a {
     line-height: 10px !important;
     color: #ff0000 !important;
 }
-

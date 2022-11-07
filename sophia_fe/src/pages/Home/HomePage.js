@@ -117,6 +117,7 @@ function HomePage() {
                                         imgURL={prods.image}
                                         price={prods.price}
                                         id={prods?._id}
+                                        quantity={prods?.quantity}
                                     />
                                 ) : (
                                     ''
@@ -158,6 +159,7 @@ function HomePage() {
                                         imgURL={prods.image}
                                         price={prods.price}
                                         id={prods?._id}
+                                        quantity={prods?.quantity}
                                     />
                                 ) : (
                                     ''

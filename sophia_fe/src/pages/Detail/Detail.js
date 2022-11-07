@@ -67,11 +67,15 @@ function DetailPage() {
                     <div className={cx('col-lg-6')}>
                         <h6 className={cx('mb-3', 'prod-title')}>{prodDetail.title}</h6>
                         <div className={cx('mt-5')}>
-                            <p className={cx('price')}>
-                                {new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(
-                                    prodDetail.price,
-                                )}
-                            </p>
+                            {prodDetail.quantity > 0 ? (
+                                <p className={cx('price')}>
+                                    {new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(
+                                        prodDetail.price,
+                                    )}
+                                </p>
+                            ) : (
+                                <p className={cx('price')}>Hết hàng</p>
+                            )}
                             <span style={{ color: '#999' }}>(Đã bao gồm VAT)</span>
                         </div>
                         <div className={cx('mt-5')}>
@@ -92,7 +96,11 @@ function DetailPage() {
                             <p className={cx('instore')}>{prodDetail.quantity} sản phẩm có sẵn</p>
                         </div>
                         <div className={cx('mt-4')}>
-                            <button className={cx('add-to-cart-btn')} onClick={handleAddToCart}>
+                            <button
+                                className={cx('add-to-cart-btn')}
+                                onClick={handleAddToCart}
+                                disabled={prodDetail.quantity <= 0 ? true : false}
+                            >
                                 Thêm vào giỏ hàng
                             </button>
                         </div>

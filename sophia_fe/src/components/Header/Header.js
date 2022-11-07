@@ -35,14 +35,21 @@ function Header() {
 
     const cate = useSelector((state) => state.category.category);
 
+    const cartData = useSelector((state) => state.cart);
+
+    let prodInCart = cartData.products.length;
+
     useEffect(() => {
         if (!cate) {
             getCategory(dispatch);
         }
+    }, [dispatch, cate]);
+
+    useEffect(() => {
         if (currentUser) {
             getUserCart(dispatch, currentUser._id);
         }
-    }, [dispatch, currentUser, cate]);
+    }, [dispatch, currentUser]);
 
     const MENU_ITEMS = [
         {
@@ -89,6 +96,7 @@ function Header() {
                                         <button className={cx('btn', 'shop-right')}>
                                             <FontAwesomeIcon icon={faCartShopping} className={cx('icon')} />
                                             <span>Giỏ hàng</span>
+                                            {prodInCart ? <span className={cx('prod-in-cart')}>{prodInCart}</span> : ''}
                                         </button>
                                     </Link>
                                     <Link to="/">

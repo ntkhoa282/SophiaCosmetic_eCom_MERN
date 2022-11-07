@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { getDetailProduct } from '~/redux/apiResquest';
 
 const cx = classNames.bind(styles);
-function ProductItem({ title, to, imgURL, price, id }) {
+function ProductItem({ title, to, imgURL, price, id, quantity }) {
     const base64String = btoa(String.fromCharCode(...new Uint8Array(imgURL.data.data)));
 
     const dispatch = useDispatch();
@@ -23,9 +23,13 @@ function ProductItem({ title, to, imgURL, price, id }) {
                     <img src={`data:image/png;base64,${base64String}`} alt={title} />
                     <div className={cx('product-item_text')}>
                         <p className={cx('mt-3', 'title')}>{title}</p>
-                        <p className={cx('price')}>
-                            {new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(price)}
-                        </p>
+                        {quantity > 0 ? (
+                            <p className={cx('price')}>
+                                {new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(price)}
+                            </p>
+                        ) : (
+                            <p className={cx('price')}>Hết hàng</p>
+                        )}
                     </div>
                 </div>
             </Link>

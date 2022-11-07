@@ -37,6 +37,10 @@
         font-size: 22px;
         color: #1f601f;
         border-left: #ccc solid 2px;
+
+        &:hover {
+            background-color: rgba($color: #26a026, $alpha: 0.3);
+        }
     }
 
     .quantity-minus {
@@ -49,6 +53,10 @@
         font-size: 22px;
         color: #1f601f;
         border-right: #ccc solid 2px;
+
+        &:hover {
+            background-color: rgba($color: #26a026, $alpha: 0.3);
+        }
     }
 
     .quantity-number {
@@ -82,6 +90,15 @@
     color: #fff;
     border: none;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        background: #ff9900;
+        color: rgb(231, 231, 231);
+    }
+
+    &:disabled {
+        background-color: #ccc;
+    }
 }
 
 .phiShip {

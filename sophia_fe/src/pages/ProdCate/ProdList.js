@@ -43,6 +43,7 @@ function ProdList({ category, sort }) {
                             imgURL={prods.image}
                             price={prods.price}
                             id={prods?._id}
+                            quantity={prods?.quantity}
                         />
                     ) : (
                         ''
