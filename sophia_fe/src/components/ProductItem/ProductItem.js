@@ -43,6 +43,7 @@ ProductItem.propTypes = {
     imgURL: PropTypes.object,
     price: PropTypes.number,
     id: PropTypes.string,
+    quantity: PropTypes.number,
 };
 
 export default ProductItem;

@@ -1,0 +1,120 @@
+.feature {
+    margin: 63px 0;
+}
+
+.pathtitle {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #1f601f;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: #1f601f;
+    padding: 10px 0;
+}
+
+.register-item {
+    margin-top: 30px;
+}
+
+.order-btn {
+    font-weight: 700;
+    line-height: 22px;
+    color: #ffffff;
+    background: #ffa500;
+    text-align: center;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+
+    &:hover {
+        background: #ff9900;
+    }
+}
+
+.my-order {
+    border: 1px solid #1f601f;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.shopping-btn {
+    background: #6cad6c;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 21px;
+    color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 100px;
+    border: none;
+    width: 220px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+    svg {
+        padding: 0 5px;
+    }
+
+    &:hover {
+        background: #62b262;
+
+        svg {
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+.coupon {
+    background: #f4f5ef;
+    padding: 20px;
+
+    input {
+        border: 1px solid #1f601f;
+        box-sizing: border-box;
+        border-radius: 10px;
+        padding: 16px 18px;
+    }
+}
+
+.error-container {
+    .error-mess {
+        padding-top: 20px;
+        font-size: 14px;
+        color: red;
+    }
+}
+
+.pay-item {
+    border: 1px solid #1f601f;
+    padding: 10px 30px;
+    border-radius: 10px;
+    height: 100px;
+    width: 361px;
+
+    p {
+        line-height: 20px;
+        margin-left: 20px;
+    }
+
+    img {
+        height: 100%;
+    }
+
+    &:hover {
+        background-color: #a1fea14d;
+    }
+}
+
+.banking-payment {
+    text-align: center;
+    img {
+        height: 400px;
+        text-align: center;
+    }
+}

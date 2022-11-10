@@ -43,7 +43,6 @@ function Login() {
                         >
                             Tên đăng nhập
                         </FormInput>
-                        {}
                     </div>
                     <div className={cx('register-item')}>
                         <FormInput
