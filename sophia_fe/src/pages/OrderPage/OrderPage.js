@@ -1,12 +1,13 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FormInput } from '~/components/FormInput/FormInput';
 import styles from './OrderPage.module.scss';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { createUserOrder, getUserCart } from '~/redux/apiResquest';
 
 const cx = classNames.bind(styles);
 function OrderPage() {
@@ -16,9 +17,18 @@ function OrderPage() {
         formState: { errors },
     } = useForm({ mode: 'onSubmit' });
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const currentUser = useSelector((state) => state.auth.login.currentUser);
 
     const products = useSelector((state) => state.cart.products);
+
+    const TOTAL_PROD = products.reduce((total, product) => total + product.quantity * product.productID.price, 0) || 0;
+
+    const SHIPPING_FEE = 25000;
+
+    const TOTAL_MONEY = TOTAL_PROD + SHIPPING_FEE;
 
     const [name, setName] = useState(currentUser.name);
     const [phone, setPhone] = useState(currentUser.phone);
@@ -26,7 +36,8 @@ function OrderPage() {
     const [note, setNote] = useState();
     const [payment, setPayment] = useState('cod');
     const [qrDisplay, setQRDisplay] = useState('none');
-    const [disable, setDisable] = useState();
+
+    const quicklinkQR = `https://img.vietqr.io/image/MB-0040128026969-compact2.png?amount=${TOTAL_MONEY}&addInfo=${`${name} ${phone} Sophia`}&accountName=NGUYEN%20THIEN%20KHOA`;
 
     const handleNameChange = (e) => {
         const name = e.target.value;
@@ -56,18 +67,6 @@ function OrderPage() {
         }
     };
 
-    const TOTAL_PROD = products.reduce((total, product) => total + product.quantity * product.productID.price, 0) || 0;
-
-    const SHIPPING_FEE = 25000;
-
-    const TOTAL_MONEY = TOTAL_PROD + SHIPPING_FEE;
-
-    const onSubmit = (data) => {
-        console.log(data);
-    };
-
-    const quicklinkQR = `https://img.vietqr.io/image/MB-0040128026969-compact2.png?amount=${TOTAL_MONEY}&addInfo=${`${name} ${phone} Sophia`}&accountName=NGUYEN%20THIEN%20KHOA`;
-
     const handleCodClick = () => {
         setPayment('cod');
         setQRDisplay('none');
@@ -78,7 +77,25 @@ function OrderPage() {
         setQRDisplay('block');
     };
 
-    console.log(payment);
+    let productList = products.map((product) => ({
+        productId: product.productID._id,
+        quantity: product.quantity,
+        option: product.option,
+    }));
+
+    const onSubmit = (data) => {
+        const newOrder = {
+            userID: currentUser._id,
+            name: data.name,
+            phone: data.phone,
+            address: data.address,
+            products: productList,
+            total: TOTAL_MONEY,
+            payment: payment,
+        };
+        createUserOrder(dispatch, newOrder, navigate);
+        getUserCart(dispatch, currentUser._id);
+    };
 
     return (
         <form className={cx('container')} onSubmit={handleSubmit(onSubmit)}>

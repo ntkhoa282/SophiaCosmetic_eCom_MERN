@@ -37,8 +37,6 @@ function Header() {
 
     const cartData = useSelector((state) => state.cart);
 
-    let prodInCart = cartData.products.length;
-
     useEffect(() => {
         if (!cate) {
             getCategory(dispatch);
@@ -96,7 +94,11 @@ function Header() {
                                         <button className={cx('btn', 'shop-right')}>
                                             <FontAwesomeIcon icon={faCartShopping} className={cx('icon')} />
                                             <span>Giỏ hàng</span>
-                                            {prodInCart ? <span className={cx('prod-in-cart')}>{prodInCart}</span> : ''}
+                                            {cartData.products.length ? (
+                                                <span className={cx('prod-in-cart')}>{cartData.products.length}</span>
+                                            ) : (
+                                                ''
+                                            )}
                                         </button>
                                     </Link>
                                     <Link to="/">

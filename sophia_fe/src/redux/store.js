@@ -4,6 +4,7 @@ import userReducer from './userSlice';
 import cateReducer from './cateSlice';
 import prodReducer from './productSlice';
 import cartReducer from './cartSlice';
+import orderReducer from './orderSlice';
 
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     category: cateReducer,
     product: prodReducer,
     cart: cartReducer,
+    order: orderReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

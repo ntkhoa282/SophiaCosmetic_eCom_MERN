@@ -8,6 +8,7 @@ import OrderPage from '~/pages/OrderPage/OrderPage';
 import CartPage from '~/pages/CartPage/CartPage';
 import Profile from '~/pages/Profile/Profile';
 import DetailPage from '~/pages/Detail/Detail';
+import OrderSuccess from '~/pages/OrderSuccess/success';
 
 const publicRoutes = [
     { path: '/', element: <HomePage /> },
@@ -23,6 +24,7 @@ const privateRoutes = [
     { path: '/order', element: <OrderPage /> },
     { path: '/my-cart', element: <CartPage /> },
     { path: '/profile', element: <Profile /> },
+    { path: '/order-success', element: <OrderSuccess /> },
 ];
 
 export { publicRoutes, privateRoutes };

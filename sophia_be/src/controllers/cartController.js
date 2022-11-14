@@ -78,7 +78,7 @@ const cartController = {
       return res.status(500).json(error);
     }
   },
-  //[POST] /cart/removeitem
+  //[PUT] /cart/removeitem
   removeProductInCart: async (req, res) => {
     try {
       const userId = req.query.user;
@@ -93,7 +93,7 @@ const cartController = {
         );
 
         if (itemIndex > -1) {
-          await Cart.updateOne({
+          await Cart.updateMany({
             $pull: { products: cart.products[itemIndex] },
           });
           cart = await Cart.findOne({ userID: userId }).populate({
@@ -106,8 +106,6 @@ const cartController = {
         res.status(200).json(cart);
       }
     } catch (error) {
-      console.log(error);
-
       return res.status(500).json(error);
     }
   },

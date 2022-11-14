@@ -23,6 +23,7 @@ import {
     removeCartProdSuccess,
 } from './cartSlice';
 import { cateFailed, cateStart, cateSuccess } from './cateSlice';
+import { createOrderFailed, createOrderStart, createOrderSuccess, logoutOrder } from './orderSlice';
 import { productFailed, productStart, productSuccess } from './productSlice';
 import { updateInfoFailed, updateInfoStart, updateInfoSuccess } from './userSlice';
 
@@ -58,6 +59,7 @@ export const logOut = async (dispatch, id, navigate, accessToken, axiosJWT) => {
         });
         dispatch(logOutSuccess());
         dispatch(logOutCart());
+        dispatch(logoutOrder());
         navigate('/');
     } catch (err) {
         dispatch(logOutFailed());
@@ -125,5 +127,16 @@ export const removeCartProd = async (dispatch, userid, prodid) => {
         dispatch(removeCartProdSuccess(res.data));
     } catch (error) {
         dispatch(removeCartProdFailed());
+    }
+};
+
+export const createUserOrder = async (dispatch, order, navigate) => {
+    dispatch(createOrderStart());
+    try {
+        const res = await axios.post('http://localhost:8000/order/createorder', order);
+        dispatch(createOrderSuccess(res.data));
+        navigate('/order-success');
+    } catch (error) {
+        dispatch(createOrderFailed());
     }
 };

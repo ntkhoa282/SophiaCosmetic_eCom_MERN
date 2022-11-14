@@ -77,7 +77,7 @@ function CartPage() {
                             </div>
                             <div className={cx('mt-4')}>
                                 <Link to="/order">
-                                    <button className={cx('order-btn')}>
+                                    <button className={cx('order-btn')} disabled={products.length > 0 ? false : true}>
                                         Tiến hành đặt hàng
                                         <FontAwesomeIcon icon={faArrowRightLong} />
                                     </button>
