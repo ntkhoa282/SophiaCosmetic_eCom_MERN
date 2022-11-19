@@ -35,13 +35,14 @@ function Header() {
 
     const cate = useSelector((state) => state.category.category);
 
-    const cartData = useSelector((state) => state.cart);
+    if (cate === null) {
+        getCategory(dispatch);
+        window.onload = () => {
+            window.location.reload();
+        };
+    }
 
-    useEffect(() => {
-        if (!cate) {
-            getCategory(dispatch);
-        }
-    }, [dispatch, cate]);
+    const cartData = useSelector((state) => state.cart);
 
     useEffect(() => {
         if (currentUser) {
@@ -94,7 +95,7 @@ function Header() {
                                         <button className={cx('btn', 'shop-right')}>
                                             <FontAwesomeIcon icon={faCartShopping} className={cx('icon')} />
                                             <span>Giỏ hàng</span>
-                                            {cartData.products.length ? (
+                                            {cartData.products !== undefined && cartData.products.length ? (
                                                 <span className={cx('prod-in-cart')}>{cartData.products.length}</span>
                                             ) : (
                                                 ''

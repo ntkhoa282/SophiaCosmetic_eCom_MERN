@@ -3,7 +3,7 @@ import AboutPage from '~/pages/About/AboutPage';
 import HomePage from '~/pages/Home/HomePage';
 import Login from '~/pages/Login/Login';
 import Register from '~/pages/Register/Register';
-import MyOrderPage from '~/pages/MyOrderPage';
+import MyOrderPage from '~/pages/MyOrder/MyOrder';
 import OrderPage from '~/pages/OrderPage/OrderPage';
 import CartPage from '~/pages/CartPage/CartPage';
 import Profile from '~/pages/Profile/Profile';

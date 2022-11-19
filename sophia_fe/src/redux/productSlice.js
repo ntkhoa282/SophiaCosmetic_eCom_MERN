@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const productSlice = createSlice({
     name: 'product',
     initialState: {
-        detail: null,
+        detail: {},
         isFetching: false,
         error: false,
     },

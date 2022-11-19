@@ -1,0 +1,90 @@
+.feature {
+    margin: 63px 0;
+
+    h4 {
+        font-weight: 700;
+        font-size: 33px;
+        line-height: 35px;
+        color: #346734;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+}
+
+//order item
+.order-item {
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(112, 112, 112, 0.3);
+    padding: 10px 20px;
+}
+
+.status {
+    padding-top: 0.5rem;
+}
+
+.createdate {
+    color: rgb(158, 158, 158);
+    font-size: 15px;
+}
+
+.unconfimred {
+    color: #ffa500;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.confimred {
+    color: #37ad37;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cancle {
+    color: rgb(255, 67, 67);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.info {
+    p {
+        font-size: 15px;
+        line-height: 15px;
+        color: rgb(99, 98, 98);
+    }
+}
+
+.title {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 600;
+    color: #346734;
+}
+
+.price {
+    color: rgb(255, 91, 91);
+    font-weight: 400;
+}
+
+.total {
+    text-align: right;
+    font-weight: 700;
+    font-size: 18px;
+    color: #ff6200;
+}
+
+.cancle-btn {
+    text-align: right;
+    
+    button {
+        color: white;
+        background-color: rgb(253, 99, 99);
+        border: none;
+        border-radius: 20px;
+        height: 35px;
+        width: 120px;
+
+        &:hover {
+            background-color: rgb(216, 82, 82);
+        }
+    }
+}

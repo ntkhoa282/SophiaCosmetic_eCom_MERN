@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import styles from './Detail.module.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addToCart } from '~/redux/apiResquest';
 
 const cx = classNames.bind(styles);
 
 function DetailPage() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const prodDetail = useSelector((state) => state.product.detail);
 
     const currentUser = useSelector((state) => state.auth.login.currentUser);
