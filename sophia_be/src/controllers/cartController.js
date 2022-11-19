@@ -72,6 +72,13 @@ const cartController = {
           path: "productID",
         },
       });
+      if (!userCart) {
+        const newCart = await Cart.create({
+          userID: req.params.id,
+          products: [],
+        });
+        return res.status(200).json(newCart);
+      }
       return res.status(200).json(userCart);
     } catch (error) {
       console.log(error);

@@ -18,7 +18,9 @@ function MyOrderPage() {
     }, [currentUser._id, dispatch]);
 
     const handleCancleBtn = async (id, status, userid) => {
-        await updateOrderStatus(dispatch, id, status, userid);
+        if (window.confirm('Bạn chắc chắn muốn hủy đơn hàng này?')) {
+            await updateOrderStatus(dispatch, id, status, userid);
+        }
     };
 
     return (
