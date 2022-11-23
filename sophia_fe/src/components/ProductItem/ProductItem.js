@@ -28,7 +28,7 @@ function ProductItem({ title, to, imgURL, price, id, quantity }) {
                                 {new Intl.NumberFormat('vi-VI', { style: 'currency', currency: 'VND' }).format(price)}
                             </p>
                         ) : (
-                            <p className={cx('price')}>Hết hàng</p>
+                            <p className={cx('price')}>Tạm hết hàng</p>
                         )}
                     </div>
                 </div>

@@ -9,6 +9,8 @@ import CartPage from '~/pages/CartPage/CartPage';
 import Profile from '~/pages/Profile/Profile';
 import DetailPage from '~/pages/Detail/Detail';
 import OrderSuccess from '~/pages/OrderSuccess/success';
+import AdminPage from '~/pages-admin/main-admin/AdminPage';
+import AddProduct from '~/pages-admin/AddProduct-admin/AddProduct';
 
 const publicRoutes = [
     { path: '/', element: <HomePage /> },
@@ -27,4 +29,12 @@ const privateRoutes = [
     { path: '/order-success', element: <OrderSuccess /> },
 ];
 
-export { publicRoutes, privateRoutes };
+const adminRoutes = [
+    { path: '/admin', element: <AdminPage /> },
+    {
+        path: '/admin/addproduct',
+        element: <AddProduct />,
+    },
+];
+
+export { publicRoutes, privateRoutes, adminRoutes };

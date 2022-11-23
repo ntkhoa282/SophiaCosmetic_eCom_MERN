@@ -108,7 +108,7 @@ function HomePage() {
                     </div>
                     <div className={cx('product-list')}>
                         <div className={cx('row')}>
-                            {bestSoldProducts.map((prods) =>
+                            {newestProducts.map((prods) =>
                                 prods.inStock === true ? (
                                     <ProductItem
                                         key={prods?._id}
@@ -150,7 +150,7 @@ function HomePage() {
                     </div>
                     <div className={cx('product-list')}>
                         <div className={cx('row')}>
-                            {newestProducts.map((prods) =>
+                            {bestSoldProducts.map((prods) =>
                                 prods.inStock === true ? (
                                     <ProductItem
                                         key={prods?._id}
