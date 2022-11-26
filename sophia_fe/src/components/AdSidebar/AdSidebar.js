@@ -95,7 +95,7 @@ function AdSidebar() {
                         </div>
                         <ul id="navDrop2" className={cx('nav', 'nav-treeview')}>
                             <li className={cx('nav-item')}>
-                                <Link to="/" className={cx('nav-link-item')}>
+                                <Link to="/admin/productsmanage" className={cx('nav-link-item')}>
                                     <div className={cx('d-flex', 'justify-content-between')}>
                                         <p className={cx('ml-3')}>Danh sách sản phẩm</p>
                                     </div>
@@ -105,13 +105,6 @@ function AdSidebar() {
                                 <Link to="/admin/addproduct" className={cx('nav-link-item')}>
                                     <div className={cx('d-flex', 'justify-content-between')}>
                                         <p className={cx('ml-3')}>Thêm sản phẩm mới</p>
-                                    </div>
-                                </Link>
-                            </li>
-                            <li className={cx('nav-item')}>
-                                <Link to="/" className={cx('nav-link-item')}>
-                                    <div className={cx('d-flex', 'justify-content-between')}>
-                                        <p className={cx('ml-3')}>Sửa thông tin sản phẩm</p>
                                     </div>
                                 </Link>
                             </li>

@@ -11,6 +11,8 @@ import DetailPage from '~/pages/Detail/Detail';
 import OrderSuccess from '~/pages/OrderSuccess/success';
 import AdminPage from '~/pages-admin/main-admin/AdminPage';
 import AddProduct from '~/pages-admin/AddProduct-admin/AddProduct';
+import ProductsManage from '~/pages-admin/ProductsManage-admin/ProductsManage';
+import UpdateProduct from '~/pages-admin/ProductsManage-admin/UpdateProduct/UpdateProduct';
 
 const publicRoutes = [
     { path: '/', element: <HomePage /> },
@@ -34,6 +36,14 @@ const adminRoutes = [
     {
         path: '/admin/addproduct',
         element: <AddProduct />,
+    },
+    {
+        path: '/admin/productsmanage',
+        element: <ProductsManage />,
+    },
+    {
+        path: '/admin/update/:id',
+        element: <UpdateProduct />,
     },
 ];
 

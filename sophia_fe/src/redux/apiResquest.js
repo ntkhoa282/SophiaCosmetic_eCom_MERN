@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { adGetProdsFailed, adGetProdsStart, adGetProdsSuccess } from './adminSlice';
 import {
     loginFailed,
     loginStart,
@@ -171,5 +172,21 @@ export const updateOrderStatus = async (dispatch, id, status, userid) => {
         dispatch(updateUserOrderSuccess(res.data));
     } catch (error) {
         dispatch(updateUserOrderFailed());
+    }
+};
+//admin
+export const adGetProds = async (dispatch, cateid) => {
+    dispatch(adGetProdsStart());
+    try {
+        let res;
+        if (cateid === '') {
+            res = await axios.get(BASE_URL + '/product/all-products');
+            return dispatch(adGetProdsSuccess(res.data));
+        } else {
+            res = await axios.get(BASE_URL + `/product?cate=${cateid}`);
+            return dispatch(adGetProdsSuccess(res.data));
+        }
+    } catch (error) {
+        dispatch(adGetProdsFailed());
     }
 };

@@ -29,6 +29,8 @@ router.get("/", productController.findProductByCategory);
 router.get("/newest", productController.getNewestProducts);
 //get best sold products
 router.get("/bestsold", productController.getBestSoldProducts);
+//update a product
+router.patch("/update/:id", productController.updateProduct);
 //get a product
 router.get("/:id", productController.getProductById);
 

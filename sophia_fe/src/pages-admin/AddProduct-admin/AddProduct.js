@@ -13,15 +13,20 @@ function AddProduct() {
 
     const onSubmit = async (data) => {
         if (window.confirm('Thêm sản phẩm mới?')) {
-            const formDt = new FormData();
-            formDt.append('title', data.title);
-            formDt.append('desc', data.desc);
-            formDt.append('image', data.image[0]);
-            formDt.append('price', data.price);
-            formDt.append('quantity', data.quantity);
-            formDt.append('category', data.category);
+            try {
+                const formDt = new FormData();
+                formDt.append('title', data.title);
+                formDt.append('desc', data.desc);
+                formDt.append('image', data.image[0]);
+                formDt.append('price', data.price);
+                formDt.append('quantity', data.quantity);
+                formDt.append('category', data.category);
 
-            await httpRequest.post('/product/add', formDt);
+                await httpRequest.post('/product/add', formDt);
+                alert('Thêm sản phẩm mới thành công!');
+            } catch (error) {
+                alert(error);
+            }
         }
     };
 

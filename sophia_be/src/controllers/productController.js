@@ -27,7 +27,7 @@ const productController = {
       return res.status(500).json(error);
     }
   },
-  //[GET] /product/all-product
+  //[GET] /product/all-products
   getAllProduct: async (req, res) => {
     try {
       const products = await Product.find().populate("category");
@@ -48,7 +48,7 @@ const productController = {
   //[GET] /product/newest (4)
   getNewestProducts: async (req, res) => {
     try {
-      const newestProd = await Product.find()
+      const newestProd = await Product.find({ inStock: true })
         .sort({ createdAt: -1 })
         .limit(4)
         .populate("category");
@@ -60,7 +60,7 @@ const productController = {
   //[GET] /product/bestsold (4)
   getBestSoldProducts: async (req, res) => {
     try {
-      const bestSoldProd = await Product.find()
+      const bestSoldProd = await Product.find({ inStock: true })
         .sort({ sold: -1 })
         .limit(4)
         .populate("category");
@@ -91,6 +91,17 @@ const productController = {
         title: new RegExp(queryName, "i"),
       }).populate("category");
       return res.status(200).json(prods);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
+  //[PATCH] /product/update/:id
+  updateProduct: async (req, res) => {
+    try {
+      const updatedProduct = await Product.findByIdAndUpdate(req.params.id, {
+        $set: req.body,
+      });
+      return res.status(200).json(updatedProduct)
     } catch (error) {
       return res.status(500).json(error);
     }
