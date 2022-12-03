@@ -1,0 +1,56 @@
+.container {
+    padding: 20px;
+}
+
+.title {
+    color: #1f601f;
+}
+
+.stt-select {
+    span {
+        font-size: 20px;
+    }
+
+    select {
+        height: 25px;
+        font-size: 20px;
+    }
+}
+
+.ords-table {
+    table {
+        width: 100%;
+    }
+
+    table,
+    th,
+    td,
+    tr {
+        border: 1px solid black;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    thead {
+        font-weight: 700;
+        
+    }
+}
+
+.unconfimred {
+    color: #ffa500;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.confimred {
+    color: #37ad37;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.cancle {
+    color: rgb(255, 67, 67);
+    font-size: 15px;
+    font-weight: 600;
+}

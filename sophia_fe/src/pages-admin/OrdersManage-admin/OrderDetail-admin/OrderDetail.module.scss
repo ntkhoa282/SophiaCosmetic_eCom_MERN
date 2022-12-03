@@ -1,0 +1,123 @@
+.container {
+    padding: 20px;
+}
+
+.title {
+    color: #1f601f;
+
+    span {
+        color: #309530;
+    }
+
+    p {
+        color: rgb(104, 104, 104);
+        font-size: 16px;
+    }
+}
+
+.unconfimred {
+    color: #ffa500 !important;
+    font-weight: 600;
+}
+
+.confimred {
+    color: #37ad37 !important;
+    font-weight: 600 !important;
+}
+
+.cancle {
+    color: rgb(255, 67, 67) !important;
+    font-weight: 600 !important;
+}
+
+.acc-order {
+    h5 {
+        color: #1f601f;
+    }
+    p {
+        font-size: 1.3rem;
+        line-height: 18px;
+        color: #1f601f;
+
+        span {
+            color: #309530;
+            font-weight: 500;
+        }
+    }
+}
+
+.receive-order {
+    h5 {
+        color: #1f601f;
+    }
+    p {
+        font-size: 1.3rem;
+        line-height: 18px;
+        color: #1f601f;
+
+        span {
+            color: #309530;
+            font-weight: 500;
+        }
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table,
+    th,
+    td,
+    tr {
+        border: 1px solid black;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    thead {
+        font-weight: 700;
+    }
+}
+
+.btn-action {
+    button {
+        margin: 0 5px;
+        width: 582px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        height: 60px;
+    }
+
+    .cf-btn {
+        background-color: #37ad37;
+
+        &:hover {
+            background-color: #309530;
+        }
+    }
+
+    .cancle-btn {
+        background-color: rgb(249, 75, 75);
+
+        &:hover {
+            background-color: rgb(191, 59, 59);
+        }
+    }
+
+    .succ-btn {
+        background-color: #37ad37;
+
+        &:hover {
+            background-color: #309530;
+        }
+    }
+
+    .failed-btn {
+        background-color: rgb(249, 75, 75);
+
+        &:hover {
+            background-color: rgb(191, 59, 59);
+        }
+    }
+}

@@ -1,5 +1,15 @@
 import axios from 'axios';
-import { adGetProdsFailed, adGetProdsStart, adGetProdsSuccess } from './adminSlice';
+import {
+    adGetOrderDetailFailed,
+    adGetOrderDetailStart,
+    adGetOrderDetailSuccess,
+    adGetProdsFailed,
+    adGetProdsStart,
+    adGetProdsSuccess,
+    adUpdateStatusFailed,
+    adUpdateStatusStart,
+    adUpdateStatusSuccess,
+} from './adminSlice';
 import {
     loginFailed,
     loginStart,
@@ -188,5 +198,27 @@ export const adGetProds = async (dispatch, cateid) => {
         }
     } catch (error) {
         dispatch(adGetProdsFailed());
+    }
+};
+
+export const adGetOrderDetail = async (dispatch, oid) => {
+    dispatch(adGetOrderDetailStart());
+    try {
+        const res = await axios.get(BASE_URL + '/order/' + oid);
+        dispatch(adGetOrderDetailSuccess(res.data));
+    } catch (error) {
+        dispatch(adGetOrderDetailFailed());
+    }
+};
+
+export const adUpdateStatus = async (dispatch, status, oid) => {
+    dispatch(adUpdateStatusStart());
+    try {
+        const res = await axios.put(BASE_URL + `/order/admin-updatestatus?oid=${oid}&status=${status}`);
+        dispatch(adUpdateStatusSuccess(res.data));
+        alert('Cập nhật thành công!')
+    } catch (error) {
+        dispatch(adUpdateStatusFailed());
+        alert('Cập nhật thất bại!');
     }
 };

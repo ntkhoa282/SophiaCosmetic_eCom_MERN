@@ -119,7 +119,7 @@ function AdSidebar() {
                         </div>
                         <ul id="navDrop3" className={cx('nav', 'nav-treeview')}>
                             <li className={cx('nav-item')}>
-                                <Link to="/" className={cx('nav-link-item')}>
+                                <Link to="/admin/ordersmanage" className={cx('nav-link-item')}>
                                     <div className={cx('d-flex', 'justify-content-between')}>
                                         <p className={cx('ml-3')}>Danh sách đơn hàng</p>
                                     </div>

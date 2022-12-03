@@ -15,8 +15,12 @@ function OrderItem({ data, onClick }) {
                     <p className={cx('unconfimred')}>Chờ xác nhận</p>
                 ) : data.status === 'confimred' ? (
                     <p className={cx('confimred')}>Đã xác nhận</p>
-                ) : (
+                ) : data.status === 'cancle' ? (
                     <p className={cx('cancle')}>Đã hủy</p>
+                ) : data.status === 'success' ? (
+                    <p className={cx('confimred')}>Thành công</p>
+                ) : (
+                    <p className={cx('cancle')}>Thất bại</p>
                 )}
             </div>
             <hr />
