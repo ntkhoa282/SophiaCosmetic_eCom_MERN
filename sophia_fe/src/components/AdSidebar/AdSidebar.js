@@ -136,7 +136,7 @@ function AdSidebar() {
                         </div>
                         <ul id="navDrop4" className={cx('nav', 'nav-treeview')}>
                             <li className={cx('nav-item')}>
-                                <Link to="/" className={cx('nav-link-item')}>
+                                <Link to="/admin/incomestats" className={cx('nav-link-item')}>
                                     <div className={cx('d-flex', 'justify-content-between')}>
                                         <p className={cx('ml-3')}>Thống kê doanh thu</p>
                                     </div>

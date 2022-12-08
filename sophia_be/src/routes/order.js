@@ -11,6 +11,8 @@ router.put("/updatestatus", orderController.updateOrderStatus);
 router.put("/admin-updatestatus", orderController.adUpdateOrderStatus);
 //get user order
 router.get("/userorder/:id", orderController.getUserOrder);
+//get month income stats
+router.get("/incomestats", orderController.incomeStats);
 //get an order by id
 router.get("/:id", orderController.getOrderById);
 //get orders list by status

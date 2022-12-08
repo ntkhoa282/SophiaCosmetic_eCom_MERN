@@ -15,6 +15,7 @@ import ProductsManage from '~/pages-admin/ProductsManage-admin/ProductsManage';
 import UpdateProduct from '~/pages-admin/ProductsManage-admin/UpdateProduct/UpdateProduct';
 import OrdersManage from '~/pages-admin/OrdersManage-admin/OrdersManage';
 import OrderDetail from '~/pages-admin/OrdersManage-admin/OrderDetail-admin/OrderDetail';
+import IncomeStats from '~/pages-admin/Stats-admin/IncomeStats/IncomeStats';
 
 const publicRoutes = [
     { path: '/', element: <HomePage /> },
@@ -54,6 +55,10 @@ const adminRoutes = [
     {
         path: '/admin/order/:id',
         element: <OrderDetail />,
+    },
+    {
+        path: '/admin/incomestats',
+        element: <IncomeStats />,
     },
 ];
 

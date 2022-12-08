@@ -144,6 +144,43 @@ const orderController = {
       return res.status(500).json(error);
     }
   },
+
+  //[GET] /order/incomestats
+  incomeStats: async (req, res) => {
+    try {
+      const incomeStats = await Order.aggregate([
+        {
+          $project: {
+            total: true,
+            status: true,
+            month: { $dateToString: { format: "%m / %Y", date: "$createdAt" } },
+          },
+        },
+        {
+          $group: {
+            _id: "$month",
+            total: {
+              $sum: {
+                $cond: [{ $eq: ["$status", "success"] }, "$total", 0],
+              },
+            },
+            successCount: {
+              $sum: { $cond: [{ $eq: ["$status", "success"] }, 1, 0] },
+            },
+            failedCount: {
+              $sum: { $cond: [{ $eq: ["$status", "failed"] }, 1, 0] },
+            },
+          },
+        },
+        {
+          $sort: { _id: -1 },
+        },
+      ]);
+      return res.status(200).json(incomeStats);
+    } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = orderController;
