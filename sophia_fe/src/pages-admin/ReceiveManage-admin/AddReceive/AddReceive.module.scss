@@ -1,0 +1,124 @@
+.container {
+    padding: 20px;
+}
+
+.title {
+    color: #1f601f;
+}
+
+.name {
+    input {
+        width: 500px !important;
+        padding-left: 20px;
+        margin-left: 20px !important;
+    }
+
+    span {
+        font-size: 20px;
+        color: #1f601f;
+    }
+}
+
+.phone {
+    input {
+        width: 500px !important;
+        padding-left: 20px;
+        margin-left: 60px !important;
+    }
+
+    span {
+        font-size: 20px;
+        color: #1f601f;
+    }
+}
+
+.products {
+    p {
+        font-size: 20px;
+        color: #1f601f;
+    }
+
+    input[type='text'] {
+        width: 500px !important;
+        padding-left: 20px;
+        margin-left: 52px !important;
+    }
+
+    span {
+        font-size: 20px;
+        color: #1f601f;
+    }
+
+    input[type='number'] {
+        height: 28px !important;
+        width: 500px !important;
+        padding-left: 20px;
+        margin-left: 69px !important;
+    }
+
+    .cate-select {
+        select {
+            width: 500px !important;
+            padding-left: 20px;
+            margin-left: 58px !important;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    .prod-select {
+        select {
+            width: 500px !important;
+            padding-left: 20px;
+            margin-left: 52px !important;
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+
+    .add-btn {
+        background-color: #c5ecc5;
+        border: none;
+        border-radius: 20px;
+        font-size: 20px;
+        width: 200px;
+
+        &:hover {
+            background-color: #72dd72;
+        }
+    }
+}
+
+.prod-list {
+    table {
+        width: 100%;
+    }
+
+    table,
+    th,
+    td,
+    tr {
+        border: 1px solid black;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    thead {
+        font-weight: 700;
+    }
+}
+
+.add-receive {
+    color: #fff;
+    font-weight: bold;
+    background: #5ca259;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    width: 100%;
+
+    &:hover {
+        background: #4d8f4b;
+    }
+}

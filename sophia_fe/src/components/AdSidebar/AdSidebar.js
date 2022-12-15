@@ -60,6 +60,19 @@ function AdSidebar() {
         }
     };
 
+    const dropDown5 = () => {
+        var img = document.getElementById('iconRight5');
+        var navDrop = document.getElementById('navDrop5');
+        if (navDrop.style.display === 'none') {
+            navDrop.style.display = 'block';
+            img.style.transform = 'rotate(90deg)';
+        } else {
+            navDrop.style.display = 'none';
+            img.style.transform = 'rotate(0deg)';
+            img.style.margin = '0';
+        }
+    };
+
     return (
         <div className={cx('sidenav')}>
             <div className={cx('d-flex', 'justify-content-center', 'sidenav-title')}>
@@ -130,11 +143,28 @@ function AdSidebar() {
                     <li className={cx('mt-4')}>
                         <div className={cx('title')} onClick={dropDown4}>
                             <div>
-                                <span>THỐNG KÊ</span>
+                                <span>ĐƠN NHẬP HÀNG</span>
                             </div>
                             <FontAwesomeIcon id="iconRight4" icon={faAngleRight} />
                         </div>
                         <ul id="navDrop4" className={cx('nav', 'nav-treeview')}>
+                            <li className={cx('nav-item')}>
+                                <Link to="/admin/receivemanage" className={cx('nav-link-item')}>
+                                    <div className={cx('d-flex', 'justify-content-between')}>
+                                        <p className={cx('ml-3')}>Danh sách đơn nhập hàng</p>
+                                    </div>
+                                </Link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li className={cx('mt-4')}>
+                        <div className={cx('title')} onClick={dropDown5}>
+                            <div>
+                                <span>THỐNG KÊ</span>
+                            </div>
+                            <FontAwesomeIcon id="iconRight5" icon={faAngleRight} />
+                        </div>
+                        <ul id="navDrop5" className={cx('nav', 'nav-treeview')}>
                             <li className={cx('nav-item')}>
                                 <Link to="/admin/incomestats" className={cx('nav-link-item')}>
                                     <div className={cx('d-flex', 'justify-content-between')}>
@@ -142,13 +172,13 @@ function AdSidebar() {
                                     </div>
                                 </Link>
                             </li>
-                            <li className={cx('nav-item')}>
+                            {/*<li className={cx('nav-item')}>
                                 <Link to="/" className={cx('nav-link-item')}>
                                     <div className={cx('d-flex', 'justify-content-between')}>
                                         <p className={cx('ml-3')}>Thống kê đơn hàng</p>
                                     </div>
                                 </Link>
-                            </li>
+    </li>*/}
                         </ul>
                     </li>
                 </ul>

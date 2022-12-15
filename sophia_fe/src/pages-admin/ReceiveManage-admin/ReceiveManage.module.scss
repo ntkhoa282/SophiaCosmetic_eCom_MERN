@@ -1,0 +1,41 @@
+.container {
+    padding: 20px;
+}
+
+.title {
+    color: #1f601f;
+}
+
+.addreceive {
+    color: #3ac13a;
+    font-size: 18px;
+    border-radius: 10px;
+
+    &:hover {
+        color: #1f601f;
+        background-color: #ffa500;
+    }
+}
+
+table {
+    width: 100%;
+}
+
+table,
+th,
+td,
+tr {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 16px;
+}
+
+thead {
+    font-weight: 700;
+}
+
+
+.his {
+    font-size: 20px;
+    color: #1f601f;
+}
