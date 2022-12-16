@@ -6,6 +6,9 @@ import {
     adGetProdsFailed,
     adGetProdsStart,
     adGetProdsSuccess,
+    adGetReceiveDetailFailed,
+    adGetReceiveDetailStart,
+    adGetReceiveDetailSuccess,
     adUpdateStatusFailed,
     adUpdateStatusStart,
     adUpdateStatusSuccess,
@@ -216,9 +219,19 @@ export const adUpdateStatus = async (dispatch, status, oid) => {
     try {
         const res = await axios.put(BASE_URL + `/order/admin-updatestatus?oid=${oid}&status=${status}`);
         dispatch(adUpdateStatusSuccess(res.data));
-        alert('Cập nhật thành công!')
+        alert('Cập nhật thành công!');
     } catch (error) {
         dispatch(adUpdateStatusFailed());
         alert('Cập nhật thất bại!');
+    }
+};
+
+export const adGetReceiveDetail = async (dispatch, id) => {
+    dispatch(adGetReceiveDetailStart());
+    try {
+        const res = await axios.get(BASE_URL + '/receive/' + id);
+        dispatch(adGetReceiveDetailSuccess(res.data));
+    } catch (error) {
+        dispatch(adGetReceiveDetailFailed());
     }
 };

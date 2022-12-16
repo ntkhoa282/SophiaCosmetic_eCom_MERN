@@ -1,0 +1,65 @@
+.container {
+    padding: 20px;
+}
+
+.title {
+    color: #1f601f;
+
+    span {
+        color: #309530;
+    }
+
+    p {
+        color: rgb(104, 104, 104);
+        font-size: 18px;
+    }
+}
+
+.acc-order {
+    h5 {
+        color: #1f601f;
+    }
+    p {
+        font-size: 1.3rem;
+        line-height: 18px;
+        color: #1f601f;
+
+        span {
+            color: #309530;
+            font-weight: 500;
+        }
+    }
+}
+
+.receive-order {
+    h5 {
+        color: #1f601f;
+    }
+    p {
+        font-size: 1.3rem;
+        line-height: 18px;
+        color: #1f601f;
+
+        span {
+            color: #309530;
+            font-weight: 500;
+        }
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table,
+    th,
+    td,
+    tr {
+        border: 1px solid black;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    thead {
+        font-weight: 700;
+    }
+}

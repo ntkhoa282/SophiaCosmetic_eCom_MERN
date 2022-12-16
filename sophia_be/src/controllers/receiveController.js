@@ -24,12 +24,29 @@ const receiveController = {
       return res.status(500).json(error);
     }
   },
-  //[GET] /receive/get-receive
+  //[GET] /receive
   getReceive: async (req, res) => {
     try {
-      const receives = await Receive.find();
+      const receives = await Receive.find().sort({ createdAt: -1 });
       return res.status(200).json(receives);
     } catch (error) {
+      return res.status(500).json(error);
+    }
+  },
+  //[GET] /receive/:id
+  getReceiveById: async (req, res) => {
+    const id = req.params.id;
+    try {
+      const receive = await Receive.findById(id).populate({
+        path: "productsImport",
+        populate: {
+          path: "productId",
+        },
+      });
+      return res.status(200).json(receive);
+    } catch (error) {
+      console.log(error);
+      
       return res.status(500).json(error);
     }
   },

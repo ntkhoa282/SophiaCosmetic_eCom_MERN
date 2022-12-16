@@ -80,7 +80,7 @@ const orderController = {
     try {
       const ordersList = await Order.find({ status: status })
         .sort({
-          createdAt: 1,
+          createdAt: -1,
         })
         .populate("userID");
       return res.status(200).json(ordersList);

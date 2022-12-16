@@ -7,6 +7,8 @@ import styles from './AddReceive.module.scss';
 
 const cx = classNames.bind(styles);
 
+let prodAddList = [];
+
 function AddReceive() {
     const navigate = useNavigate();
 
@@ -20,7 +22,8 @@ function AddReceive() {
 
     const [prodList, setProdList] = useState([]);
     const [pid, setPID] = useState('');
-    const [prodAddList, setProdAddList] = useState([]);
+    const [prodLabel, setProdLabel] = useState('');
+    //const [prodAddList, setProdAddList] = useState([]);
     const [rowData, setRowData] = useState([]);
 
     const handleCateSelecteChanged = async (e) => {
@@ -33,12 +36,16 @@ function AddReceive() {
     const handleProdSelectChanged = (e) => {
         if (e.target.value !== '') {
             setPID(e.target.value);
+            const index = e.nativeEvent.target.selectedIndex;
+            const label = e.nativeEvent.target[index].text;
+            setProdLabel(label);
         }
     };
 
     const addBtnClick = () => {
         const prodItem = {
             productId: pid,
+            prodName: prodLabel,
             quantityImport: quantityRef.current.value,
             priceImport: priceRef.current.value,
         };
@@ -129,7 +136,7 @@ function AddReceive() {
                                 <thead>
                                     <tr>
                                         <td>STT</td>
-                                        <td>Mã sản phẩm</td>
+                                        <td>Tên sản phẩm</td>
                                         <td>Số lượng</td>
                                         <td>Đơn giá nhập</td>
                                         <td>Thành tiền</td>
@@ -140,7 +147,7 @@ function AddReceive() {
                                         return (
                                             <tr key={index}>
                                                 <td>{index + 1}</td>
-                                                <td>{prod.productId}</td>
+                                                <td>{prod.prodName}</td>
                                                 <td>{prod.quantityImport}</td>
                                                 <td>
                                                     {new Intl.NumberFormat('vi-VI', {

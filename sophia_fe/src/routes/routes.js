@@ -18,6 +18,7 @@ import OrderDetail from '~/pages-admin/OrdersManage-admin/OrderDetail-admin/Orde
 import IncomeStats from '~/pages-admin/Stats-admin/IncomeStats/IncomeStats';
 import ReceiveManage from '~/pages-admin/ReceiveManage-admin/ReceiveManage';
 import AddReceive from '~/pages-admin/ReceiveManage-admin/AddReceive/AddReceive';
+import ReceiveDetail from '~/pages-admin/ReceiveManage-admin/ReceiveDetail/ReceiveDetail';
 
 const publicRoutes = [
     { path: '/', element: <HomePage /> },
@@ -61,6 +62,10 @@ const adminRoutes = [
     {
         path: '/admin/receivemanage/addreceive',
         element: <AddReceive />,
+    },
+    {
+        path: '/admin/receive/:id',
+        element: <ReceiveDetail />,
     },
     {
         path: '/admin/order/:id',

@@ -13,6 +13,11 @@ const adminSlice = createSlice({
             isFetching: false,
             error: false,
         },
+        receivemanage: {
+            detail: {},
+            isFetching: false,
+            error: false,
+        },
     },
     reducers: {
         adGetProdsStart: (state) => {
@@ -51,6 +56,18 @@ const adminSlice = createSlice({
             state.ordermanage.isFetching = false;
             state.ordermanage.error = true;
         },
+        adGetReceiveDetailStart: (state) => {
+            state.receivemanage.isFetching = true;
+        },
+        adGetReceiveDetailSuccess: (state, action) => {
+            state.receivemanage.isFetching = false;
+            state.receivemanage.detail = action.payload;
+            state.receivemanage.error = false;
+        },
+        adGetReceiveDetailFailed: (state) => {
+            state.receivemanage.isFetching = false;
+            state.receivemanage.error = true;
+        },
     },
 });
 
@@ -64,6 +81,9 @@ export const {
     adUpdateStatusStart,
     adUpdateStatusSuccess,
     adUpdateStatusFailed,
+    adGetReceiveDetailStart,
+    adGetReceiveDetailSuccess,
+    adGetReceiveDetailFailed,
 } = adminSlice.actions;
 
 export default adminSlice.reducer;
